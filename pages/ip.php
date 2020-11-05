@@ -7,5 +7,10 @@
 		<TITLE> Quiz IP </TITLE>
 	</HEAD>
 	<BODY>
+
+		<?php
+
+		?>
+		
 	</BODY>
 </HTML>

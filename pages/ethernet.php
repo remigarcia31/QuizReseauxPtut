@@ -7,5 +7,10 @@
 		<TITLE> Quiz Ethernet </TITLE>
 	</HEAD>
 	<BODY>
+		
+		<?php
+
+		?>
+		
 	</BODY>
 </HTML>

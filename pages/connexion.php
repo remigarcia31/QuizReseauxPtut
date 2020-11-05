@@ -7,5 +7,10 @@
 		<TITLE> Connexion </TITLE>
 	</HEAD>
 	<BODY>
+		
+		<?php
+
+		?>
+
 	</BODY>
 </HTML>

@@ -7,5 +7,10 @@
 		<TITLE> Quiz Wi-Fi </TITLE>
 	</HEAD>
 	<BODY>
+		
+		<?php
+
+		?>
+
 	</BODY>
 </HTML>
