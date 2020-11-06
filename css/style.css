@@ -2,31 +2,49 @@
 
 body 
 {
-    font-family: 'Raleway', sans-serif;
-    color: white;
-    text-align: center;
-    background-color: #0b3375;
+    font-family: 'Raleway', sans-serif!important;
+    color: white!important;
+    text-align: center!important;
+    background-color: #0b3375!important;
 }
 
 footer
 {
-    background-color: #031636;
+    background-color: #031636!important;
+    position:absolute!important;
+    bottom:0%!important;
+    width:100%!important;
+    padding-top:50px!important;
 }
 
 .center {
-    vertical-align: middle;
+    position:absolute!important;
+    bottom:40%!important;
+    width: 100%!important;
+    padding-top: 50px!important;
 } 
 
 .img_fond
 {
-    background-color: black;
-    background-image: url("../images/img_fond.jpg");
-    background-repeat: no-repeat;
-    opacity: 0.75;
+    background-image: url("../images/Capture1.PNG")!important;
+    background-repeat: repeat!important;
+    width: 100%;
+
 }   
 
 .img_iut
 {
-    border-radius: 15px;
-    width: 50%;
+    border-radius: 5px!important;
+    width: 50%!important;
+    margin-bottom: 35px;
+}
+
+.navbar-darkblue
+{
+    background-color: #031636!important;
+}
+
+h1
+{
+    font-weight: 500;
 }
