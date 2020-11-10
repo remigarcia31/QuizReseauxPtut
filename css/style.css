@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
 
+html
+{
+    height: 100%;
+}
+
 body 
 {
     font-family: 'Raleway', sans-serif!important;
     color: white!important;
     text-align: center!important;
-    background-color: #0b3375!important;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: rgb(0,71,96);
+    background: radial-gradient(circle, rgba(0,71,96,1) 0%, rgba(3,22,54,1) 100%);
 }
 
 footer
@@ -26,8 +36,8 @@ footer
 
 .img_fond
 {
-    background-image: url("../images/Capture1.PNG")!important;
-    background-repeat: repeat!important;
+    background-image: url("https://giphy.com/gifs/matrix-BW51OCstarPBm")!important;
+    background-repeat: no-repeat!important;
     width: 100%;
 
 }   
