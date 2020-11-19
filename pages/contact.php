@@ -1,6 +1,6 @@
 <!--    page de contact du site web quiz reseau   -->
 
-<!-- ============================================ -->
+<!--  ========================================== -->
 
 <!-- Methode de gestion des erreurs du formulaire -->
 <?php
