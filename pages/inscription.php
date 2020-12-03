@@ -11,7 +11,7 @@ if(isset($_POST['forminscription'])) {
    	if(!empty($_POST['prenom']) AND !empty($_POST['nom']) AND !empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
       	$pseudolength = strlen($pseudo);
       	if($pseudolength >= 5 AND $pseudolength <= 25) {
-            if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            if(preg_match('/[-0-9a-zA-Z.+_]+@iut-rodez\.fr/i', $mail)) {
                	$reqmail = $bdd->prepare("SELECT * FROM utilisateurs WHERE mail = ?");
                	$reqmail->execute(array($mail));
                	$mailexist = $reqmail->rowCount();
@@ -30,7 +30,7 @@ if(isset($_POST['forminscription'])) {
                   	$message = "Adresse mail déjà utilisée !";
                	}
             } else {
-               	$message = "Votre adresse mail n'est pas valide !";
+               	$message = "Votre adresse mail n'est pas valide ! (exemple@iut-rodez.fr)";
             }
       	} else {
          	$message = "Votre pseudo doit posseder au moins 5 caractères et ne pas dépasser 25 caractères !";
@@ -114,7 +114,7 @@ if(isset($_POST['forminscription'])) {
 				                    	<label for="mail">Mail :</label>
 					                </td>
 					                <td>
-					                    <input type="text" placeholder="Votre mail" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
+					                    <input type="text" placeholder="Votre mail (@iut-rodez.fr)" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
 					                </td>
 					            </tr>
 					            <tr>

@@ -51,8 +51,8 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
                    		 		echo '</ul>';
 
                    		 		echo '<ul class="nav navbar-nav navbar-right">';
-				            	echo '<li><a href="profil.php?id='.$_SESSION['id'].'"><span class="glyphicon glyphicon-user"></span>'.$userinfo['pseudo'].'</a></li>';
-				            	echo '<li><a href="deconnexion.php"><span class="glyphicon glyphicon-user"></span>Se déconnecter</a></li>';
+				            	echo '<li><a href="profil.php?id='.$_SESSION['id'].'"><span class="glyphicon glyphicon-user"></span>&nbsp'.$userinfo['pseudo'].'</a></li>';
+				            	echo '<li><a href="deconnexion.php"><span class="glyphicon glyphicon-user"></span> Se déconnecter</a></li>';
 				        		echo '</ul>';
 
 							} else {

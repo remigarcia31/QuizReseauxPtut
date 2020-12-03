@@ -26,11 +26,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 	   	if(!empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['message'])) {
 	      	$messagelength = strlen($message);
 	      	if($messagelength >= 5 AND $messagelength <= 300) {
-	            if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-	               	
-	            } else {
-	               	$msg = "Votre adresse mail n'est pas valide !";
-	            }
+	            
 	      	} else {
 	         	$msg = "Votre message doit posseder au moins 5 caractères et ne pas dépasser 300 caractères !";
 	      	}
@@ -52,7 +48,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		<script src="../jquery/jquery.min.js"></script>
 		<script src="../bootstrap/js/bootstrap.min.js"></script>
 		<link rel="icon" type="image/png" href="../images/contact.png"> <!-- Icone dans l'onglet -->
-		<link href="../css/style_connexion.css" rel="stylesheet"/>
+		<link href="../css/style_contact.css" rel="stylesheet"/>
 		<TITLE>Contact</TITLE>
 	</HEAD>
 
@@ -113,8 +109,14 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 											<label for="email">Mail :</label>
 										</td>
 										<td>
-											<input type="text" placeholder="Votre mail" id="mail" name="mail"
-													value="<?php if(isset($mail)) { echo $mail; } ?>" />
+											<input type="text" id="mail" name="mail"
+													value="<?php
+																/*On va chercher le mail de l'utilisateur*/
+   																$mailuser = $bdd->query("SELECT mail FROM utilisateurs WHERE id = $_GET[id]");
+   																/* On récupère l'information*/
+   																$sonmail = $mailuser->fetch();
+   																echo $sonmail['mail']; 	 
+   															?>"readonly/>
 										</td>
 									</tr>
 									<tr>
@@ -122,7 +124,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 											<label for="message">Message :</label>
 										</td>
 										<td>
-											<textarea  rows="4" cols="28.8" placeholder="Ici, votre message" 
+											<textarea  rows="4" cols="29" placeholder="Ici, votre message" 
 													id="message" name="message" > </textarea>
 										</td>
 									</tr>
@@ -159,7 +161,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 									<b>Email : </b>' . $_POST['mail'] . '<br>
 									<b>Message : </b>' . $_POST['message'] . '</p>';
 
-									$retour = mail('loic.rieudebat@iut-rodez.fr', 'Envoi depuis page Contact', $message, $entete);
+									$retour = mail('remi.garcia@iut-rodez.fr', 'Envoi depuis page Contact', $message, $entete);
 									if($retour) {
 										echo '<p>Votre message a bien été envoyé.</p>';
 									}
@@ -192,5 +194,8 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 	</body>
 </HTML>
 <?php
+} else {
+	header('Location: connexion.php');
+  	exit();
 }
 ?>

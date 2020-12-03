@@ -80,5 +80,8 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 
 <?php  
 	} 
+} else {
+	header('Location: connexion.php');
+  	exit();
 }
 ?>

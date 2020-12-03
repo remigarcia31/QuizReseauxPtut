@@ -173,5 +173,8 @@ function valideIP($ip)
 
 </html> 
 <?php
+} else {
+  header('Location: connexion.php');
+  exit();
 }
 ?>

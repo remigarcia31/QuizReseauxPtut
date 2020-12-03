@@ -32,7 +32,7 @@ if(isset($_POST['formconnexion'])) {
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
 		<script src="../jquery/jquery.min.js"></script>
 		<script src="../bootstrap/js/bootstrap.min.js"></script>
-		<link href="../css/style_inscription.css" rel="stylesheet"/>
+		<link href="../css/style_connexion.css" rel="stylesheet"/>
 		<TITLE> Connexion </TITLE>
 		<link rel="icon" type="image/png" href="../images/avatar.png"> <!-- Icone dans l'onglet -->
 
