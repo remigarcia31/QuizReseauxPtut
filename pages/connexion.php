@@ -1,4 +1,4 @@
-	<?php
+<?php
 session_start();
  
 $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
@@ -15,7 +15,7 @@ if(isset($_POST['formconnexion'])) {
          $_SESSION['id'] = $userinfo['id'];
          $_SESSION['pseudo'] = $userinfo['pseudo'];
          $_SESSION['mail'] = $userinfo['mail'];
-         header("Location: profil.php?id=".$_SESSION['id']);
+         header("Location: ../index.php?id=".$_SESSION['id']);
       } else {
          $message = "Mail ou mot de passe incorrect !";
       }
@@ -30,8 +30,12 @@ if(isset($_POST['formconnexion'])) {
 	<HEAD>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
-		<link href="../css/style_connexion.css" rel="stylesheet"/>
+		<script src="../jquery/jquery.min.js"></script>
+		<script src="../bootstrap/js/bootstrap.min.js"></script>
+		<link href="../css/style_inscription.css" rel="stylesheet"/>
 		<TITLE> Connexion </TITLE>
+		<link rel="icon" type="image/png" href="../images/avatar.png"> <!-- Icone dans l'onglet -->
+
 	</HEAD>
 	<BODY>
 		<header>
@@ -46,16 +50,11 @@ if(isset($_POST['formconnexion'])) {
 			        </div>
 			        <div class="collapse navbar-collapse" id="myNavbar">
 				        <ul class="nav navbar-nav">
-				  	        <li class="active"><a href="../index.html">Accueil</a></li>
-				  	        <li><a href="pages/ip.php">IP</a></li>
-			    	        <!-- ADD LATER -->
-				  	        <li><a href="pages/wifi.php">Wi-Fi</a></li>
-					        <li><a href="pages/ethernet.php">Ethernet</a></li>
-			     	        <li><a href="pages/contact.php">Contact</a></li>
+				  	        <li><a href="../index.php">Accueil</a></li>
 				        </ul>
-				        <!-- ADD LATER -->
 				        <ul class="nav navbar-nav navbar-right">
 				            <li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
+				            <li class="active"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
 				        </ul>
 			        </div>
 			    </div>
@@ -104,5 +103,19 @@ if(isset($_POST['formconnexion'])) {
 			    </div>
 			</div>
 		</div>
+		<footer>
+            <div class="container-fluid">
+                <div class="col-xs-12 col-sm-6 col-md-10">
+                    <p>Ce site à été crée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'information, consultez les 
+					<a href="mentions_legales.php">Mentions légales</a>.
+                    <br/> Consultez également la 
+                    <a href="protection_donnees.php">Protection des données</a>.
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-2">
+                      <a href="https://www.iut-rodez.fr/" target="_blank"> <img src="../images/logoIut.png" alt="Logo IUT de Rodez" class="img_iut"> </a> 
+                </div>
+            </div>
+        </footer>
 	</BODY>
 </HTML>

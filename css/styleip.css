@@ -8,7 +8,7 @@ html
 body 
 {
     font-family: 'Raleway', sans-serif!important;
-    color: white!important;
+    color: dodgerblue!important;
     text-align: center!important;
     height: 100%;
     margin: 0;
@@ -17,6 +17,11 @@ body
     background-attachment: fixed;
     background: rgb(0,71,96);
     background: radial-gradient(circle, rgba(0,71,96,1) 0%, rgba(3,22,54,1) 100%);
+}
+
+form
+{
+    font-weight: bold;
 }
 
 footer
@@ -65,57 +70,4 @@ footer
 h1
 {
     font-weight: 500;
-}
-
-
-#carre {
-  position: relative;
-  margin: auto;
-  width: 600px;
-  height: 350px;
-  /*background: #fff;*/
-  border-radius: 20px;
-  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.4);
-}
-
-.formulaire {
-  margin-top: 15%;
-  position: absolute;
-  box-sizing: border-box; 
-  width: 500px;
-  height: 500px;
-}
-
-label{
-  width: 100px;
-  margin-right: 10px;
-  margin-bottom: 20px;
-}
-
-input[type="text"],
-input[type="password"] {
-  display: block;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  padding: 4px;
-  width: 220px;
-  height: 32px;
-  border: none;
-  border-bottom: 1px solid #aaa;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 15px;
-  transition: 0.2s ease;
-}
-
-input[type="text"],
-input[type="password"]
- {
-  border-bottom: 2px solid #16a085;
-  color: #16a085;
-  transition: 0.2s ease;
-}
-
-#message {
-	color : #16a085;
 }

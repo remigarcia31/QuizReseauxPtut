@@ -2,12 +2,18 @@
 session_start();
  
 $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
- 
+
+/* Si un utilisateur est connecté on affiche la page de son profil*/
 if(isset($_GET['id']) AND $_GET['id'] > 0) {
+	/*récupérer l'id en int pour plus de sécurité*/
    $getid = intval($_GET['id']);
    $requser = $bdd->prepare('SELECT * FROM utilisateurs WHERE id = ?');
    $requser->execute(array($getid));
    $userinfo = $requser->fetch();
+
+   /* vérifie l'identité de l'utilisateur, si ce n'est pas son profil(id) ne voit rien*/
+   if (isset($_SESSION['id']) AND $userinfo['id'] == $_SESSION['id']) {
+   
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +23,8 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
 		<link href="../css/style_connexion.css" rel="stylesheet"/>
 		<TITLE> Profil </TITLE>
+		<link rel="icon" type="image/png" href="../images/avatar.png"> <!-- Icone dans l'onglet -->
+
 	</HEAD>
 	<BODY>
 		<header>
@@ -30,25 +38,19 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 				        </button>
 			        </div>
 			        <div class="collapse navbar-collapse" id="myNavbar">
-				        <ul class="nav navbar-nav">
-				  	        <li class="active"><a href="../index.html">Accueil</a></li>
-				  	        <li><a href="pages/ip.php">IP</a></li>
-			    	        <!-- ADD LATER -->
-				  	        <li><a href="pages/wifi.php">Wi-Fi</a></li>
-					        <li><a href="pages/ethernet.php">Ethernet</a></li>
-			     	        <li><a href="pages/contact.php">Contact</a></li>
+						<ul class="nav navbar-nav">
+				        	<?php 
+							/* On affiche les boutons pour accèder à l'index, ip et contact*/
+							echo '<li><a href="../index.php?id='.$_SESSION['id'].'">Accueil</a></li>';
+						  	echo '<li><a href="ip.php?id='.$_SESSION['id'].'">IP</a></li>';
+						  	echo '<li><a href="contact.php?id='.$_SESSION['id'].'">Contact</a></li>'; 						  
+					        ?> 
 				        </ul>
-				        <!-- ADD LATER -->
-				        <?php
-					    if(isset($_SESSION['id']) AND $userinfo['id'] == $_SESSION['id']) {
-					    ?>
 					    <ul class="nav navbar-nav navbar-right">
-				            <li><a href="profil.php"><span class="glyphicon glyphicon-user"></span> <?php echo $userinfo['pseudo']; ?></a></li>
-				            <li><a href="deconnexion.php"><span class="glyphicon glyphicon-user"></span>Se déconnecter</a></li>
+				            <li class="active"><?php echo '<a href="profil.php?id='.$_SESSION['id'].'"> ';?><span class="glyphicon glyphicon-user"></span>&nbsp<?php echo $userinfo['pseudo']; ?></a></li>
+				            <li><a href="deconnexion.php"><span class="glyphicon glyphicon-user"></span> Se déconnecter</a></li>
 				        </ul>
-					    <?php
-					    }
-					    ?>
+					   
 			        </div>
 			    </div>
 		    </nav>
@@ -56,10 +58,27 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 
 		<h1>Bonjour <?php echo $userinfo['pseudo']; ?></h1>
 		<h2>TODO : En maintenance pour consulter l'historique</h2>
-		
+		<!-- pied de page -->
+		<footer>
+            <div class="container-fluid">
+                <div class="col-xs-12 col-sm-6 col-md-10">
+                    <p>Ce site à été crée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'information, consultez les 
+	                    <?php 
+						echo '<a href="mentions_legales.php?id='.$_SESSION['id'].'">Mentions légales</a>.';						
+                   	 	echo "<br/> Consultez également la ";
+                  		echo '<a href="protection_donnees.php?id='.$_SESSION['id'].'">Protection des données</a>.';
+						?>
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-2">
+                      <a href="https://www.iut-rodez.fr/" target="_blank"> <img src="../images/logoIut.png" alt="Logo IUT de Rodez" class="img_iut"> </a> 
+                </div>
+            </div>
+        </footer>
 	</BODY>
 </HTML>
 
-<?php   
+<?php  
+	} 
 }
 ?>
