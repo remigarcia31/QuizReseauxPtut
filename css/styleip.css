@@ -8,7 +8,7 @@ html
 body 
 {
     font-family: 'Raleway', sans-serif!important;
-    color: white!important;
+    color: dodgerblue!important;
     text-align: center!important;
     height: 100%;
     margin: 0;
@@ -17,6 +17,11 @@ body
     background-attachment: fixed;
     background: rgb(0,71,96);
     background: radial-gradient(circle, rgba(0,71,96,1) 0%, rgba(3,22,54,1) 100%);
+}
+
+form
+{
+    font-weight: bold;
 }
 
 footer
