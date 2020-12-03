@@ -20,7 +20,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 <!DOCTYPE html>
 <HTML lang="fr">
 	<HEAD>
-		<meta charset="utf-8" />
+		<meta charset="utf-8"/>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
 		<link href="css/style.css" rel="stylesheet"/>
 		<script src="jquery/jquery.min.js"></script>
