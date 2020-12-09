@@ -8,7 +8,11 @@ html
 body 
 {
     font-family: 'Raleway', sans-serif!important;
+<<<<<<< HEAD
     color: dodgerblue!important;
+=======
+    color: dodgerblue;
+>>>>>>> adam
     text-align: center!important;
     height: 100%;
     margin: 0;
@@ -67,7 +71,21 @@ footer
     z-index: 2;
 }
 
+<<<<<<< HEAD
 h1
 {
     font-weight: 500;
+=======
+h1, h2
+{
+    font-weight: bold;
+	
+	color : white!important;
+}
+.encadrer-un-contenu 
+{
+	border: 3px solid black; 
+	padding: 10px; 
+	border-color : white!important;
+>>>>>>> adam
 }

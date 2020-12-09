@@ -72,7 +72,11 @@ h1
   position: relative;
   margin: auto;
   width: 600px;
+<<<<<<< HEAD
   height: 300px;
+=======
+  height: 200px;
+>>>>>>> adam
   /*background: #fff;*/
   border-radius: 20px;
   box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.4);

@@ -20,7 +20,11 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 <!DOCTYPE html>
 <HTML lang="fr">
 	<HEAD>
+<<<<<<< HEAD
 		<meta charset="utf-8"/>
+=======
+		<meta charset="utf-8" />
+>>>>>>> adam
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
 		<link href="css/style.css" rel="stylesheet"/>
 		<script src="jquery/jquery.min.js"></script>
@@ -45,7 +49,11 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 				        	<!-- Vérifie si un utilisateur est connecté (existance de id), si il clique sur l'accueil il est redirigé vers sa page index -->
 				  	        <li class="active"> <?php if(isset($_GET['id']) AND $_GET['id'] > 0) {
 				  	        						  	echo '<a href="index.php?id='.$_SESSION['id'].'">Accueil</a></li>';
+<<<<<<< HEAD
 				  	        						  	echo '<li><a href="pages/ip.php?id='.$_SESSION['id'].'">IP</a></li>';
+=======
+				  	        						  	echo '<li><a href="pages/choixCIDR.php?id='.$_SESSION['id'].'">IP</a></li>';
+>>>>>>> adam
 				  	        						  	echo '<li><a href="pages/contact.php?id='.$_SESSION['id'].'">Contact</a></li>';
 				  	        						  } else {
 				  	        						  	/*sinon ramène à l'index de base*/
@@ -96,7 +104,11 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 	    <footer>
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-6 col-md-10">
+<<<<<<< HEAD
                     <p>Ce site à été crée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'information, consultez les 
+=======
+                    <p>Ce site a été créée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les 
+>>>>>>> adam
 	                    <?php 
 	                    if(isset($_GET['id']) AND $_GET['id'] > 0) {
 	                    	echo '<a href="pages/mentions_legales.php?id='.$_SESSION['id'].'">Mentions légales</a>.';						
