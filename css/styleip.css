@@ -8,7 +8,7 @@ html
 body 
 {
     font-family: 'Raleway', sans-serif!important;
-    color: white!important;
+    color: dodgerblue;
     text-align: center!important;
     height: 100%;
     margin: 0;
@@ -17,6 +17,11 @@ body
     background-attachment: fixed;
     background: rgb(0,71,96);
     background: radial-gradient(circle, rgba(0,71,96,1) 0%, rgba(3,22,54,1) 100%);
+}
+
+form
+{
+    font-weight: bold;
 }
 
 footer
@@ -62,7 +67,15 @@ footer
     z-index: 2;
 }
 
-h1
+h1, h2
 {
-    font-weight: 500;
+    font-weight: bold;
+	
+	color : white!important;
+}
+.encadrer-un-contenu 
+{
+	border: 3px solid black; 
+	padding: 10px; 
+	border-color : white!important;
 }

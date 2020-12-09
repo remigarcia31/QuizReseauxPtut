@@ -1,0 +1,24 @@
+footer
+{
+    background-color: #031636!important;
+    position: absolute!important;
+    bottom:0%!important;
+    width:100%!important;
+    padding-top:50px!important;
+    height: auto;
+    z-index: 1;
+}
+
+.texte
+{
+    position: absolute;
+    top: 70%;
+    text-align: left;
+    z-index: 1;
+}
+
+h2
+{
+    color: cornflowerblue!important;
+}
+

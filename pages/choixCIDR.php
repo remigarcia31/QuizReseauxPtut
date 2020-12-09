@@ -14,23 +14,24 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
     /* On récupère l'information*/
     $userinfo = $pseudouser->fetch();
 }
-?>
-<!DOCTYPE html>
-<HTML lang="fr">
-	<HEAD>
-		<meta charset="utf-8" />
-		<link href="../css/style.css" rel="stylesheet"/>
-		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
-		<script src="../jquery/jquery.min.js"></script>
-		<script src="../bootstrap/js/bootstrap.min.js"></script>
-		<TITLE> Quiz Ethernet </TITLE>
-		<link rel="icon" type="image/png" href="../images/ethernet.png"> <!-- Icone dans l'onglet -->
 
-	</HEAD>
-	<BODY>
-		<header>
-		<!-- Barre de navigation -->
-			<nav class="navbar navbar-inverse navbar-darkblue">
+?>
+
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Quiz IP</title>
+    
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
+	<script src="../jquery/jquery.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<link rel="icon" type="image/png" href="../images/ip.png"> <!-- Icone dans l'onglet -->
+	<link href="../css/styleip.css" rel="stylesheet"/>
+</head>
+        <header>
+			  <!-- Barre de navigation -->
+		    <nav class="navbar navbar-inverse navbar-darkblue">
 			    <div class="container-fluid">
 			        <div class="navbar-header">
 				        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -50,29 +51,13 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 				  	        						  }
 				  	        					?>Accueil</a></li>
 				  	        <!-- Vérifie si un utilisateur est connecté (existance de id), si il clique sur le bouton il est redirigé vers sa page  -->
-							<li> <?php if(isset($_GET['id']) AND $_GET['id'] > 0) {
+							<li class="active"> <?php if(isset($_GET['id']) AND $_GET['id'] > 0) {
 				  	        						  	echo '<a href="ip.php?id='.$_SESSION['id'].'"> ';
 				  	        						  } else {
 				  	        						  	/*sinon ramène à la page de base*/
-				  	        						  	echo '<a href="ip.php"> ';
+				  	        						  	echo '<a href="choixCIDR.php"> ';
 				  	        						  }
 				  	        					?>IP</a></li>
-				  	        <!-- Vérifie si un utilisateur est connecté (existance de id), si il clique sur le bouton il est redirigé vers sa page  -->
-							<li> <?php if(isset($_GET['id']) AND $_GET['id'] > 0) {
-				  	        						  	echo '<a href="wifi.php?id='.$_SESSION['id'].'"> ';
-				  	        						  } else {
-				  	        						  	/*sinon ramène à la page de base*/
-				  	        						  	echo '<a href="wifi.php"> ';
-				  	        						  }
-				  	        					?>Wi-Fi</a></li>
-					        <!-- Vérifie si un utilisateur est connecté (existance de id), si il clique sur le bouton il est redirigé vers sa page  -->
-							<li class="active"> <?php if(isset($_GET['id']) AND $_GET['id'] > 0) {
-				  	        						  	echo '<a href="ethernet.php?id='.$_SESSION['id'].'"> ';
-				  	        						  } else {
-				  	        						  	/*sinon ramène à la page de base*/
-				  	        						  	echo '<a href="ethernet.php"> ';
-				  	        						  }
-				  	        					?>Ethernet</a></li>
 			     	        <!-- Vérifie si un utilisateur est connecté (existance de id), si il clique sur le bouton il est redirigé vers sa page  -->
 				  	        <li> <?php if(isset($_GET['id']) AND $_GET['id'] > 0) {
 				  	        						  	echo '<a href="contact.php?id='.$_SESSION['id'].'"> ';
@@ -107,48 +92,16 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		    </nav>
 		</header>
 
-		<section>
-			<div class="container_fluid">
-				<div class="img_fond col-xs-12 center">
-					<br/><br/>
-					<h1>PAGE EN COURS DE CONSTRUCTION</h1>
-					<br/>
-					<h3>Merci de revenir plus tard ! :)</h3>
-					<br/><br/><br/>
-				</div>
-			</div>
-		</section>
-		<?php
-
-		?>
-		<!-- pied de page -->
-		<footer>
-            <div class="container-fluid">
-                <div class="col-xs-12 col-sm-6 col-md-10">
-                    <p>Ce site à été crée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'information, consultez les 
-	                    <?php 
-	                    if(isset($_GET['id']) AND $_GET['id'] > 0) {
-	                    	echo '<a href="mentions_legales.php?id='.$_SESSION['id'].'"> ';
-						} else {
-							/*sinon ramène aux mentions légales de base*/
-						  	echo '<a href="mentions_legales.php"> ';	
-						}
-					?>Mentions légales</a>.
-                    <br/> Consultez également la
-						<?php 
-	                    if(isset($_GET['id']) AND $_GET['id'] > 0) {
-	                    	echo '<a href="protection_donnees.php?id='.$_SESSION['id'].'"> ';
-						} else {
-							/*sinon ramène aux protection de données de base*/
-						  	echo '<a href="protection_donnees.php"> ';	
-						}
-					?>Protection des données</a>.
-                    </p>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-2">
-                      <a href="https://www.iut-rodez.fr/" target="_blank"> <img src="../images/logoIut.png" alt="Logo IUT de Rodez" class="img_iut"> </a> 
-                </div>
-            </div>
-        </footer>
-	</BODY>
-</HTML>
+<body>
+    <h1> Quiz IP : Choix du type du masque </h1>
+    <form action="ip.php" method="post">
+        <p>Avant de commencer le quiz, veuillez choisir si vous voulez un masque avec la notation CIDR ou non </p>
+            <label for="ACIDR">Masque avec notation CIDR</label>
+            <input type="radio" name="typeMasque" value="ACIDR"> </br>
+            <label for="SCIDR">Masque sans notation CIDR</label>
+            <input type="radio" name="typeMasque" value="SCIDR">
+            <br/><br/>
+            <input value="Choisir" type="submit"/>
+    </form>
+    </body>
+</html> 
