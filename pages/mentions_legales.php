@@ -46,11 +46,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 				  	        <?php 
 	                	    if(isset($_GET['id']) AND $_GET['id'] > 0) {
 	                	    	echo '<li><a href="../index.php?id='.$_SESSION['id'].'">Accueil</a></li> ';						
-<<<<<<< HEAD
-                   		 		echo '<li><a href="ip.php?id='.$_SESSION['id'].'">IP</a></li> ';
-=======
                    		 		echo '<li><a href="choixCIDR.php?id='.$_SESSION['id'].'">IP</a></li> ';
->>>>>>> adam
                    		 		echo '<li><a href="contact.php?id='.$_SESSION['id'].'">Contact</a></li> ';
                    		 		echo '</ul>';
                    		 		

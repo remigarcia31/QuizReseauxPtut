@@ -70,11 +70,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 						<?php 
 						/* On affiche les boutons pour accèder à l'index, ip et contact*/
 						echo '<li><a href="../index.php?id='.$_SESSION['id'].'">Accueil</a></li>';
-<<<<<<< HEAD
-					  	echo '<li><a href="ip.php?id='.$_SESSION['id'].'">IP</a></li>';
-=======
 					  	echo '<li><a href="choixCIDR.php?id='.$_SESSION['id'].'">IP</a></li>';
->>>>>>> adam
 					  	echo '<li class="active"><a href="contact.php?id='.$_SESSION['id'].'">Contact</a></li>'; 						  
 				        ?> 
 				    </ul>
@@ -182,11 +178,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 			<footer>
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-6 col-md-10">
-<<<<<<< HEAD
-                    <p>Ce site à été crée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'information, consultez les 
-=======
                     <p>Ce site a été créée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les 
->>>>>>> adam
 	                    <?php 
 						echo '<a href="mentions_legales.php?id='.$_SESSION['id'].'">Mentions légales</a>.';						
                    	 	echo "<br/> Consultez également la ";
