@@ -13,8 +13,6 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
     $pseudouser->execute(array($getid));
     /* On récupère l'information*/
     $userinfo = $pseudouser->fetch();
-}
-
 ?>
 <html lang="fr">
 <head>
@@ -31,64 +29,33 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
     <header>
 	<!-- Barre de navigation -->
 		<nav class="navbar navbar-inverse navbar-darkblue">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span>
-				    <span class="icon-bar"></span>                        
-				</button>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-				    <!-- Vérifie si un utilisateur est connecté (existance de id), si il clique sur l'accueil il est redirigé vers sa page index -->
-				  	<li> <?php if(isset($_GET['id']) AND $_GET['id'] > 0) {
-				  	    echo '<a href="../index.php?id='.$_SESSION['id'].'"> ';
-				  	} else {
-				  	    /*sinon ramène à l'index de base*/
-				  	    echo '<a href="../index.php"> ';
-			        }
-				  	?>Accueil</a></li>
-				  	<!-- Vérifie si un utilisateur est connecté (existance de id), si il clique sur le bouton il est redirigé vers sa page  -->
-					<li class="active"> <?php if(isset($_GET['id']) AND $_GET['id'] > 0) {
-				  	        echo '<a href="choixCIDR.php?id='.$_SESSION['id'].'"> ';
-				  	} else {
-				  	    /*sinon ramène à la page de base*/
-				  	    echo '<a href="choixCIDR.php"> ';
-				  	}
-				  	?>IP</a></li>
-			     	    <!-- Vérifie si un utilisateur est connecté (existance de id), si il clique sur le bouton il est redirigé vers sa page  -->
-				  	    <li> <?php if(isset($_GET['id']) AND $_GET['id'] > 0) {
-				  	        echo '<a href="contact.php?id='.$_SESSION['id'].'"> ';
-				  	    } else {
-				  	        /*sinon ramène à la page de base*/
-				  	        echo '<a href="contact.php"> ';
-				  	    }
-				  	    ?>Contact</a></li>
-				</ul>
-
-				<?php
-				if ((isset($_GET['id']) AND $_GET['id'] > 0)) {
-					/* On affiche le bouton pour accèder à son compte et de déconnexion*/
-					echo '<ul class="nav navbar-nav navbar-right">';
-				    echo '<li><a href="profil.php?id='.$_SESSION['id'].'"><span class="glyphicon glyphicon-user"></span>'.$userinfo['pseudo'].'</a></li>';
-				    echo '<li><a href="deconnexion.php"><span class="glyphicon glyphicon-user"></span>Se déconnecter</a></li>';
-				    echo '</ul>';
-				} else {
-
-				?>
-				<!-- Si pas d'utilisateur connecté alors on affiche inscription et connexion -->
-				<ul class="nav navbar-nav navbar-right">
-				    <li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
-				    <li><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
-				</ul>	        
-			    <?php
-				/* Fin du if */
-				}
-				?>
-			</div>
-		</div>
-	</nav>
+    		<div class="container-fluid">
+    			<div class="navbar-header">
+    				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    				    <span class="icon-bar"></span>
+    				    <span class="icon-bar"></span>
+    				    <span class="icon-bar"></span>                        
+    				</button>
+    			</div>
+    			<div class="collapse navbar-collapse" id="myNavbar">
+    				<ul class="nav navbar-nav">
+                        <?php 
+                        /* On affiche les boutons pour accèder à l'index, ip et contact*/
+                        echo '<li><a href="../index.php?id='.$_SESSION['id'].'">Accueil</a></li>';
+                        echo '<li class="active"><a href="choixCIDR.php?id='.$_SESSION['id'].'">IP</a></li>';
+                        echo '<li><a href="contact.php?id='.$_SESSION['id'].'">Contact</a></li>';                          
+                        ?> 
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <?php
+                        /* On affiche les boutons pour accèder à son compte et de déconnexion*/
+                        echo '<li><a href="profil.php?id='.$_SESSION['id'].'"><span class="glyphicon glyphicon-user"></span>&nbsp'.$userinfo['pseudo'].'</a></li>';
+                        echo '<li><a href="deconnexion.php"><span class="glyphicon glyphicon-user"></span> Se déconnecter</a></li>';
+                        ?>
+                    </ul>
+    			</div>
+    		</div>
+	    </nav>
     </header>
 
 <script type="application/javascript">
@@ -145,6 +112,7 @@ $tableauC = array(24 => 24, 28 => 28, 30 => 30);
     
 ?>
 
+
 <h1>Quiz IP</h1>
             <h2>Donnez les informations suivantes à l'aide de cette adresse IP :</h2>
 			
@@ -165,7 +133,7 @@ $tableauC = array(24 => 24, 28 => 28, 30 => 30);
 								width="30px"  Onclick="javascript:window.history.go(0)"/>
 				</h4>
 			</h2>
-<form method="POST" action="correctionIP.php">
+<?php echo '<form action="correctionIP.php?id='.$_SESSION['id'].'" method="post">';?>
     <?php
     if(isset($_POST["typeMasque"])) {
         $typeMasque = $_POST["typeMasque"];
@@ -255,8 +223,13 @@ $tableauC = array(24 => 24, 28 => 28, 30 => 30);
 
     <input type="hidden" name="randMasque" value="<?php echo "" . $randMask . "" ?>"></input>
     <input type="submit" value="Envoyer la réponse">
+
 </form>
 
 </body>
 
+
 </html>
+<?php
+}
+?>

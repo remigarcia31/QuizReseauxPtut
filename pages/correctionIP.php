@@ -13,8 +13,6 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
     $pseudouser->execute(array($getid));
     /* On récupère l'information*/
     $userinfo = $pseudouser->fetch();
-}
-
 ?>
 <html lang="fr">
 <head>
@@ -93,11 +91,12 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 <body>
 	<?php
 
+	// Test si une Ip et son masque est valide
 	function isValidIP($str, $cidr)
 	{
 		$valide = true;
 		$explode = explode(".", $str);
-		if (preg_match("/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))$/", $str) == 1) {
+		if (preg_match("/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))$/", $str) == 1) { // regex d'une IP
 			if ($explode[0] > 191 && $cidr < 24) {
 				$valide = false;
 			} elseif ($explode[0] > 126 && $cidr < 16) {
@@ -113,6 +112,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $valide;
 	}
 
+	//Indique la presence d'un sous reseau
 	function srIsValide($classe, $masque)
 	{
 		$isValide = true;
@@ -126,6 +126,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $isValide;
 	}
 
+	//Renvoi la correction de la classe
 	function CorrectionClasse($value)
 	{
 		$classe = "";
@@ -138,6 +139,8 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		}
 		return $classe;
 	}
+
+	//Renvoi la correction du masque
 	function CorrectionMasque($value)
 	{
 		$masque = "";
@@ -151,6 +154,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $masque;
 	}
 
+	//Renvoi la correction de @Reseau
 	function CorrectionReseau($value, $ip1, $ip2, $ip3)
 	{
 		$reseau = "";
@@ -164,6 +168,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $reseau;
 	}
 
+	//Renvoi la correction de @Broadcast
 	function CorrectionBroascast($value, $ip1, $ip2, $ip3)
 	{
 		if ($value == "A") {
@@ -176,6 +181,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $reseau;
 	}
 
+	//Renvoi la creation du res
 	function CreationRes($ip1, $ip2, $ip3, $ip4)
 	{
 		$res = "";
@@ -187,12 +193,11 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 			$res = $ip1 . "." . $ip2;
 		} elseif ($ip1 != "") {
 			$res = $ip1;
-		} else {
-			//TODE gestion erreurs
 		}
 		return $res;
 	}
 
+	//Renvoi la correction du int
 	function CorrectionRes($value, $ip1, $ip2, $ip3)
 	{
 		$res = "";
@@ -207,6 +212,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $res;
 	}
 
+	//Renvoi la creation du int
 	function CreationInt($ip1, $ip2, $ip3, $ip4)
 	{
 		$int = "";
@@ -218,12 +224,11 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 			$int = $ip3 . "." . $ip4;
 		} elseif ($ip4 != "") {
 			$int = $ip4;
-		} else {
-			//TODO gestion erreurs
 		}
 		return $int;
 	}
 
+	//Renvoi la correction du res
 	function CorrectionInt($value, $ip2, $ip3, $ip4)
 	{
 		$int = "";
@@ -238,6 +243,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $int;
 	}
 
+	//Renvoi la correction du masque de sous reseau
 	function CorrectionMasqueSR($value)
 	{
 		$masquebit = "";
@@ -260,6 +266,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $masquesr;
 	}
 
+	//convertit un masque en binaire
 	function masqueEnIp($masque)
 	{
 
@@ -275,6 +282,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $masquebit;
 	}
 
+	//Renvoi la correction du Sres
 	function CorrectionSRes($masque, $masquesr, $ip)
 	{
 		$ipbit = ipToBin($ip);
@@ -300,6 +308,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $sres;
 	}
 
+	//Convertit une IP en binaire
 	function ipToBin($ip)
 	{
 		$ipbin = "";
@@ -332,6 +341,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $ipbin;
 	}
 
+	//Renvoi la correction du Sint
 	function CorrectionSInt($masque, $masquesr, $ip)
 	{
 		$ipbit = ipToBin($ip);
@@ -352,6 +362,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return $sint;
 	}
 
+	//Renvoi la correction de @Sous Reseau
 	function CorrectionIPSR($ip, $sint)
 	{
 		$ipbit = ipToBin($ip);
@@ -363,6 +374,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return binToIp($ipsr);
 	}
 
+	//Renvoi la correction de @Broadcast de SR
 	function CorrectionBroascastSR($ip, $sint)
 	{
 		$ipbit = ipToBin($ip);
@@ -374,6 +386,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 		return binToIp($brosr);
 	}
 
+	//convertit un ip binaire en ip base 10
 	function binToIp($ip)
 	{
 		$ipExplode = str_split($ip, 8);
@@ -387,11 +400,11 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
 	if (isset($_POST)) {
 
-		$randIP = $_POST["randIP"];
-		$explodeIp = explode("/", $randIP);
-		if (isValidIP($explodeIp[0], $explodeIp[1])) {
+		$randIP = $_POST["randIP"];  //recuperation de l'ip
+		$explodeIp = explode("/", $randIP);  
+		if (isValidIP($explodeIp[0], $explodeIp[1])) { //si l'ip est valide
 
-			$point = 0;
+			$point = 0; //compteur de point
 
 			$masqueCIDR = $explodeIp[1];
 
@@ -406,66 +419,77 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
 			$classe = $_POST["classe"];
 
+			//recuperation du masque
 			$masque1 = $_POST["masque1"];
 			$masque2 = $_POST["masque2"];
 			$masque3 = $_POST["masque3"];
 			$masque4 = $_POST["masque4"];
 			$masque = $masque1 . "." . $masque2 . "." . $masque3 . "." . $masque4;
 
+			//recuperation du res
 			$res1 = $_POST["res1"];
 			$res2 = $_POST["res2"];
 			$res3 = $_POST["res3"];
 			$res4 = $_POST["res4"];
 			$res = CreationRes($res1, $res2, $res3, $res4);
 
+			//recuperation du int
 			$int1 = $_POST["int1"];
 			$int2 = $_POST["int2"];
 			$int3 = $_POST["int3"];
 			$int4 = $_POST["int4"];
 			$int = Creationint($int1, $int2, $int3, $int4);
 
+			//recuperation du reseau
 			$reseau1 = $_POST["reseau1"];
 			$reseau2 = $_POST["reseau2"];
 			$reseau3 = $_POST["reseau3"];
 			$reseau4 = $_POST["reseau4"];
 			$reseau = $reseau1 . "." . $reseau2 . "." . $reseau3 . "." . $reseau4;
 
+			//recuperation du broadcast
 			$broadcast1 = $_POST["broadcast1"];
 			$broadcast2 = $_POST["broadcast2"];
 			$broadcast3 = $_POST["broadcast3"];
 			$broadcast4 = $_POST["broadcast4"];
 			$broadcast = $broadcast1 . "." . $broadcast2 . "." . $broadcast3 . "." . $broadcast4;
 
+			//recuperation du masque de SR
 			$masquesr1 = $_POST["msreseau1"];
 			$masquesr2 = $_POST["msreseau2"];
 			$masquesr3 = $_POST["msreseau3"];
 			$masquesr4 = $_POST["msreseau4"];
 			$masquesr = $masquesr1 . "." . $masquesr2 . "." . $masquesr3 . "." . $masquesr4;
 
+			//recuperation du reseau SR
 			$sreseau1 = $_POST["sreseau1"];
 			$sreseau2 = $_POST["sreseau2"];
 			$sreseau3 = $_POST["sreseau3"];
 			$sreseau4 = $_POST["sreseau4"];
 			$sreseau = $sreseau1 . "." . $sreseau2 . "." . $sreseau3 . "." . $sreseau4;
 
+			//recuperation du broadcastSR
 			$broadcastsr1 = $_POST["broadcastsr1"];
 			$broadcastsr2 = $_POST["broadcastsr2"];
 			$broadcastsr3 = $_POST["broadcastsr3"];
 			$broadcastsr4 = $_POST["broadcastsr4"];
 			$broadcastsr = $broadcastsr1 . "." . $broadcastsr2 . "." . $broadcastsr3 . "." . $broadcastsr4;
 
+			//recuperation du sres
 			$sres1 = $_POST["sres1"];
 			$sres2 = $_POST["sres2"];
 			$sres3 = $_POST["sres3"];
 			$sres4 = $_POST["sres4"];
 			$sres = $sres1 . $sres2 . $sres3 . $sres4;
 
+			//recuperation du sint
 			$sint1 = $_POST["sint1"];
 			$sint2 = $_POST["sint2"];
 			$sint3 = $_POST["sint3"];
 			$sint4 = $_POST["sint4"];
 			$sint = $sint1 . $sint2 . $sint3 . $sint4;
 
+			//calcul des points
 			$CorClasse = CorrectionClasse($randIP1);
 			if ($CorClasse == $classe) {
 				$point++;
@@ -591,11 +615,15 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 
 	<?php
 		} else {
-			echo "L'ip et/ou le masque entrée est invalide, veulliez recommencer";
+			echo "L'ip et/ou le masque entrée est invalide, veuillez recommencer";
 		}
 	}
 	?>
-	<form action="choixCIDR.php">
+	<?php echo '<form action="choixCIDR.php?id='. $_SESSION['id'] .'" method="post">';?>
 		<input value="Recommencer avec une nouvelle IP" type="submit" />
 	</form>
 </body>
+</html>
+<?php
+}
+?>

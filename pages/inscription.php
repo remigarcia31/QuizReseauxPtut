@@ -20,9 +20,6 @@ if(isset($_POST['forminscription'])) {
                     	$inserutil = $bdd->prepare("INSERT INTO utilisateurs(prenom, nom, mail, motdepasse, pseudo) VALUES(?,?,?,?,?)");
                      	$inserutil->execute(array($prenom, $nom, $mail, $mdp, $pseudo));
                      	$message = "Votre compte a bien été créé !";
-
-                     	/*$_SESSION['comptecree'] = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
-                     	header('Location : connexion.php');*/
                   	} else {
                      	$message = "Vos mots de passes ne correspondent pas !";
                   	}
@@ -155,7 +152,7 @@ if(isset($_POST['forminscription'])) {
 		<footer>
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-6 col-md-10">
-                    <p>Ce site a été créée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les 
+                    <p>Ce site a été créé par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les 
 					<a href="mentions_legales.php">Mentions légales</a>.
                     <br/> Consultez également la 
                     <a href="protection_donnees.php">Protection des données</a>.

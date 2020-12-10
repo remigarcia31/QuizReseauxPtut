@@ -92,7 +92,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 					<p>Le site internet n'accepte pas et ne reçoit pas de fonds publicitaires.<br/>
 					Tout le contenu du site <a target="_blank" href="http://ptutquizz.alwaysdata.net/">http://ptutquizz.alwaysdata.net/</a> est libre de droit.<br/>
 					Les icones sont des images libres de droit récupérés sur le site <a target="_blank" href="https://www.flaticon.com/">https://www.flaticon.com/</a>
-					Toute reproduction, distribution, modification, retransmission ou publication de ces différents éléments est autorisé.
+					Toute reproduction, distribution, modification, retransmission ou publication de ces différents éléments est autorisée.
 					<br/><br/><br/>
 					<h2>Confidentialité des données personnelles</h2>
 					Les informations personnelles que vous fournissez sur le site, sont confidentielles.
