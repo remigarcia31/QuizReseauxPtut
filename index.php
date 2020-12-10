@@ -96,7 +96,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 	    <footer>
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-6 col-md-10">
-                    <p>Ce site a été créée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les 
+                    <p>Ce site a été créé par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les 
 	                    <?php 
 	                    if(isset($_GET['id']) AND $_GET['id'] > 0) {
 	                    	echo '<a href="pages/mentions_legales.php?id='.$_SESSION['id'].'">Mentions légales</a>.';						

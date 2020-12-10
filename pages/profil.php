@@ -57,12 +57,12 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 		</header>
 
 		<h1>Bonjour <?php echo $userinfo['pseudo']; ?></h1>
-		<h2>TODO : En maintenance pour consulter l'historique</h2>
+		<h2>Vos résultats seront disponible prochainement sur cette page</h2>
 		<!-- pied de page -->
 		<footer>
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-6 col-md-10">
-                    <p>Ce site a été créée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les
+                    <p>Ce site a été créé par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les
 	                    <?php 
 						echo '<a href="mentions_legales.php?id='.$_SESSION['id'].'">Mentions légales</a>.';						
                    	 	echo "<br/> Consultez également la ";

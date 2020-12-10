@@ -65,23 +65,21 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 				        </button>
 			        </div>
 			        <div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
-
-						<?php 
-						/* On affiche les boutons pour accèder à l'index, ip et contact*/
-						echo '<li><a href="../index.php?id='.$_SESSION['id'].'">Accueil</a></li>';
-					  	echo '<li><a href="choixCIDR.php?id='.$_SESSION['id'].'">IP</a></li>';
-					  	echo '<li class="active"><a href="contact.php?id='.$_SESSION['id'].'">Contact</a></li>'; 						  
-				        ?> 
-				    </ul>
-
-						<?php
-						/* On affiche les boutons pour accèder à son compte et de déconnexion*/
-					    echo '<ul class="nav navbar-nav navbar-right">';
-				        echo '<li><a href="profil.php?id='.$_SESSION['id'].'"><span class="glyphicon glyphicon-user"></span>&nbsp'.$userinfo['pseudo'].'</a></li>';
-				        echo '<li><a href="deconnexion.php"><span class="glyphicon glyphicon-user"></span> Se déconnecter</a></li>';
-				        echo '</ul>';
-				        ?>
+						<ul class="nav navbar-nav">
+                		    <?php 
+                		    /* On affiche les boutons pour accèder à l'index, ip et contact*/
+                		    echo '<li><a href="../index.php?id='.$_SESSION['id'].'">Accueil</a></li>';
+                		    echo '<li><a href="choixCIDR.php?id='.$_SESSION['id'].'">IP</a></li>';
+                		    echo '<li class="active"><a href="contact.php?id='.$_SESSION['id'].'">Contact</a></li>';                          
+                		    ?> 
+                		</ul>
+                		<ul class="nav navbar-nav navbar-right">
+                		    <?php
+                		    /* On affiche les boutons pour accèder à son compte et de déconnexion*/
+                		    echo '<li><a href="profil.php?id='.$_SESSION['id'].'"><span class="glyphicon glyphicon-user"></span>&nbsp'.$userinfo['pseudo'].'</a></li>';
+                		    echo '<li><a href="deconnexion.php"><span class="glyphicon glyphicon-user"></span> Se déconnecter</a></li>';
+                		    ?>
+                		</ul>
 			        </div>
 			    </div>
 		    </nav>
@@ -178,7 +176,7 @@ if (isset($_GET['id']) AND $_GET['id'] > 0) {
 			<footer>
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-6 col-md-10">
-                    <p>Ce site a été créée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les 
+                    <p>Ce site a été créé par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les 
 	                    <?php 
 						echo '<a href="mentions_legales.php?id='.$_SESSION['id'].'">Mentions légales</a>.';						
                    	 	echo "<br/> Consultez également la ";
