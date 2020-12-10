@@ -8,7 +8,7 @@ html
 body 
 {
     font-family: 'Raleway', sans-serif!important;
-    color: dodgerblue!important;
+    color: dodgerblue;
     text-align: center!important;
     height: 100%;
     margin: 0;
@@ -67,7 +67,15 @@ footer
     z-index: 2;
 }
 
-h1
+h1, h2
 {
-    font-weight: 500;
+    font-weight: bold;
+	
+	color : white!important;
+}
+.encadrer-un-contenu 
+{
+	border: 3px solid black; 
+	padding: 10px; 
+	border-color : white!important;
 }

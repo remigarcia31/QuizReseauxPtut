@@ -19,7 +19,7 @@ if(isset($_POST['forminscription'])) {
                 	if($mdp == $mdp2) {
                     	$inserutil = $bdd->prepare("INSERT INTO utilisateurs(prenom, nom, mail, motdepasse, pseudo) VALUES(?,?,?,?,?)");
                      	$inserutil->execute(array($prenom, $nom, $mail, $mdp, $pseudo));
-                     	$message = "Votre compte a bien été créé ! Vous allez être redirigé vers la page de connexion";
+                     	$message = "Votre compte a bien été créé !";
                   	} else {
                      	$message = "Vos mots de passes ne correspondent pas !";
                   	}
@@ -87,7 +87,7 @@ if(isset($_POST['forminscription'])) {
 				                    	<label for="pseudo">Pseudo :</label> 
 				                  	</td>
 				                  	<td>
-				                    	<input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="" />
+				                    	<input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" />
 				                  	</td>
 				               	</tr>
 				               	<tr>
@@ -95,7 +95,7 @@ if(isset($_POST['forminscription'])) {
 				                    	<label for="prenom">Prénom :</label>
 					                </td>
 					                <td>
-					                    <input type="text" placeholder="Votre prénom" id="prenom" name="prenom" value="" />
+					                    <input type="text" placeholder="Votre prénom" id="prenom" name="prenom" value="<?php if(isset($prenom)) { echo $prenom; } ?>" />
 					                </td>
 					            </tr>
 					            <tr>
@@ -103,7 +103,7 @@ if(isset($_POST['forminscription'])) {
 				                    	<label for="nom">Nom :</label>
 					                </td>
 					                <td>
-					                    <input type="text" placeholder="Votre nom" id="nom" name="nom" value="" />
+					                    <input type="text" placeholder="Votre nom" id="nom" name="nom" value="<?php if(isset($nom)) { echo $nom; } ?>" />
 					                </td>
 					            </tr>
 				               	<tr>
@@ -111,7 +111,7 @@ if(isset($_POST['forminscription'])) {
 				                    	<label for="mail">Mail :</label>
 					                </td>
 					                <td>
-					                    <input type="text" placeholder="Votre mail (@iut-rodez.fr)" id="mail" name="mail" value="" />
+					                    <input type="text" placeholder="Votre mail (@iut-rodez.fr)" id="mail" name="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" />
 					                </td>
 					            </tr>
 					            <tr>
@@ -139,11 +139,11 @@ if(isset($_POST['forminscription'])) {
 					            </tr>
 				            </table>
 			         </form>
-			        <?php
-			        if(isset($message)) {
+			         <?php
+			         if(isset($message)) {
 			            echo '<font color="red">'.$message."</font>";
-			        }
-			        ?>
+			         }
+			         ?>
 			      	</div>
 			    </div>
 			</div>
@@ -152,7 +152,7 @@ if(isset($_POST['forminscription'])) {
 		<footer>
             <div class="container-fluid">
                 <div class="col-xs-12 col-sm-6 col-md-10">
-                    <p>Ce site à été crée par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'information, consultez les 
+                    <p>Ce site a été créé par des étudiants en DUT informatique 2ème année. <br/> Pour plus d'informations, consultez les 
 					<a href="mentions_legales.php">Mentions légales</a>.
                     <br/> Consultez également la 
                     <a href="protection_donnees.php">Protection des données</a>.
