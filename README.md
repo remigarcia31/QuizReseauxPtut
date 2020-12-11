@@ -1,5 +1,7 @@
 # QuizReseauxPtut
-Projet tutoré qui à pour but la création d'un site web avec un quiz sur les notions de réseaux du DUT Informatique 1ère année à l'IUT de Rodez. 
+# Projet 7-2 : Site web "quiz réseau"
+
+Projet tutoré qui à pour but la création d'un site web avec un quiz sur les notions du module "réseau" du DUT Informatique 1ère et 2ème année à l'IUT de Rodez. 
 Ce quizz permet aux étudiants de réviser les notions de réseaux suivantes 
  - IP
  - Wi-Fi
@@ -7,10 +9,10 @@ Ce quizz permet aux étudiants de réviser les notions de réseaux suivantes
  
 Ce projet est réalisé par quatres étudiants :
 
-- Thomas GAFFET
-- Rémi GARCIA
-- Loïc RIEUDEBAT
-- Adam KHALEPO
+- Thomas GAFFET, développeur et Product Owner
+- Rémi GARCIA, développeur
+- Loïc RIEUDEBAT, développeur
+- Adam KHALEPO, développeur et Scrum Master
 
 Lien vers le site web :
 http://ptutquizz.alwaysdata.net/
