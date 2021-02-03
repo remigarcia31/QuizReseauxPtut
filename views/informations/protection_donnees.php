@@ -1,80 +1,93 @@
-<?php
-// On démarre la session AVANT d'écrire du code HTML
-session_start();
+<!--
+  ~ yasmf - Yet Another Simple MVC Framework (For PHP)
+  ~     Copyright (C) 2019   Franck SILVESTRE
+  ~
+  ~     This program is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU Affero General Public License as published
+  ~     by the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     This program is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU Affero General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU Affero General Public License
+  ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
 
-$bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
-
-/*Vérifie si un utilisateur est connecté*/
-if (isset($_GET['id']) AND $_GET['id'] > 0) {
-	/* On met l'id en int pour la sécurité*/
-	$getid = intval($_GET['id']);
-	/*On va chercher le pseudo de l'utilisateur*/
-    $pseudouser = $bdd->prepare('SELECT pseudo FROM utilisateurs WHERE id = ?');
-    $pseudouser->execute(array($getid));
-    /* On récupère l'information*/
-    $userinfo = $pseudouser->fetch();
-}
-?>
-
-<!DOCTYPE html>
-<HTML lang="fr">
-	<HEAD>
-        <meta charset="utf-8" />
-        <link href="../css/style.css" rel="stylesheet"/>
-        <link href="../css/style_mentions_donnees.css" rel="stylesheet"/>
+  <!DOCTYPE html>
+<html lang="en">
+<HEAD>
+		<meta charset="utf-8" />
+		<link href="../css/style.css" rel="stylesheet"/>
+		<link href="../css/style_mentions_donnees.css" rel="stylesheet"/>
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
 		<script src="../jquery/jquery.min.js"></script>
 		<script src="../bootstrap/js/bootstrap.min.js"></script>
-		<TITLE> Protection des données </TITLE>
+		<TITLE> Mentions Légales </TITLE>
 		<link rel="icon" type="image/png" href="../images/monitor.png"> <!-- Icone dans l'onglet -->
-	</HEAD>
-	
-	<body>
-		<header>
-		    <nav class="navbar navbar-inverse navbar-darkblue"> <!-- NAVBAR contenant le menu déroulant avec les paramètres du site -->
-			    <div class="container-fluid">
-			        <div class="navbar-header">
-				        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <!-- s'affiche quand le site est réduit-->
-				            <span class="icon-bar"></span>
-				            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span> 
-				        </button>
-			        </div>
-			        <div class="collapse navbar-collapse" id="myNavbar"> 
-                    <ul class="nav navbar-nav">
-				        	<!-- Vérifie si un utilisateur est connecté (existance de id), si il clique sur l'accueil il est redirigé vers sa page index -->
-				  	        <?php 
-	                	    if(isset($_GET['id']) AND $_GET['id'] > 0) {
-	                	    	echo '<li><a href="../index.php?id='.$_SESSION['id'].'">Accueil</a></li> ';						
-                   		 		echo '<li><a href="choixCIDR.php?id='.$_SESSION['id'].'">IP</a></li> ';
-                   		 		echo '<li><a href="contact.php?id='.$_SESSION['id'].'">Contact</a></li> ';
-                   		 		echo '</ul>';
+</HEAD>
+<body>
+<?php
+spl_autoload_extensions(".php");
+spl_autoload_register();
 
-                   		 		echo '<ul class="nav navbar-nav navbar-right">';
-				            	echo '<li><a href="profil.php?id='.$_SESSION['id'].'"><span class="glyphicon glyphicon-user"></span>&nbsp'.$userinfo['pseudo'].'</a></li>';
-				            	echo '<li><a href="deconnexion.php"><span class="glyphicon glyphicon-user"></span> Se déconnecter</a></li>';
-				        		echo '</ul>';
+use yasmf\HttpHelper;
+?>
+<!-- menu qui permet de naviguer entre les différentes pages du site -->
+	<header>
+    <nav class="navbar navbar-inverse navbar-darkblue">
+	    <div class="container-fluid">
+        <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+	        </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li>
+              <form action="index.php" method="post">
+                <input hidden name="action" value="">
+                <input hidden name="controller" value="">
+                <input type="submit" value="Accueil">
+              </form>
+            </li>
+            <li>
+              <form action="index.php" method="post">
+                <input hidden name="action" value="choixCIDR">
+                <input hidden name="controller" value="Ip">
+                <input type="submit" value="IP">
+              </form>
+            </li>
+            <li>
+              <form action="index.php" method="post">
+                <input hidden name="action" value="wifi">
+                <input hidden name="controller" value="Wifi">
+                <input type="submit" value="Wifi">
+              </form>
+            </li>
+            <li>
+              <form action="index.php" method="post">
+                <input hidden name="action" value="ethernet">
+                <input hidden name="controller" value="Ethernet">
+                <input type="submit" value="Ethernet">
+              </form>
+            </li>
+				  </ul>
+          <!-- CONNEXION / INSCRIPTION A METTRE EN PLACE A LA FIN
+			    <ul class="nav navbar-nav navbar-right">
+			      <li><a href="pages/inscription.php"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
+			      <li><a href="pages/connexion.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+			    </ul>-->	             
+			  </div>
+		  </div>
+	  </nav>
+  </header>
 
-							} else {
-								echo '<li><a href="../index.php">Accueil</a></li> ';
-								echo '</ul>';
-							?>
-							<!-- Si pas d'utilisateur connecté alors on affiche inscription et connexion -->
-				        	<ul class="nav navbar-nav navbar-right">
-				            	<li><a href="inscription.php"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
-				            	<li><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
-				        	</ul>
-							<?php
-							/*fin du else*/
-							}
-							?>
-				        </ul>
-			        </div>
-			    </div>
-		    </nav>
-		</header>
-
-		<section>
+  <section>
 			<p>
 			<div class="container_fluid">
 				<div class="img_fond center"> <!-- Bandeau central -->

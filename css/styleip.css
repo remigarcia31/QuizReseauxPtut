@@ -19,10 +19,6 @@ body
     background: radial-gradient(circle, rgba(0,71,96,1) 0%, rgba(3,22,54,1) 100%);
 }
 
-form
-{
-    font-weight: bold;
-}
 
 footer
 {
@@ -78,4 +74,20 @@ h1, h2
 	border: 3px solid black; 
 	padding: 10px; 
 	border-color : white!important;
+}
+
+input[type=submit] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    transition-duration: 0.4s;
+    margin: 5px;
+    background-color: #031636;
+    color: white;
+    border: 2px solid #031636;
+  }
+
+input[type=submit]:hover {
+    background-color: #555555;
+    color: white;
 }
