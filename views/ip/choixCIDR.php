@@ -88,9 +88,11 @@ use yasmf\HttpHelper;
 	  </nav>
   </header>
     <h1> Quiz IP : Choix du type du masque </h1>
-    <form action="ip.php" method="post">
+    <form action="index.php" method="post">
         <p>Avant de commencer le quiz, veuillez choisir si vous voulez un masque avec la notation CIDR ou non </p>
             <label for="ACIDR">Masque avec notation CIDR</label>
+            <input hidden name="action" value="quizIP">
+            <input hidden name="controller" value="Ip">
             <input type="radio" name="typeMasque" value="ACIDR" required> </br>
             <label for="SCIDR">Masque sans notation CIDR</label>
             <input type="radio" name="typeMasque" value="SCIDR">

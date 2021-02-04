@@ -36,4 +36,9 @@ class IpController
         $view = new View("views/ip/choixCIDR");
         return $view;
     }
+
+    public function quizIP($pdo) {
+        $view = new View("views/ip/ip");
+        return $view;
+    }
 }
