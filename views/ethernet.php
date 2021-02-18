@@ -1,17 +1,35 @@
-<!DOCTYPE html>
-<HTML lang="fr">
-<HEAD>
-		<meta charset="utf-8" />
-		<link href="../css/style.css" rel="stylesheet"/>
-		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
-		<script src="../jquery/jquery.min.js"></script>
-		<script src="../bootstrap/js/bootstrap.min.js"></script>
-		<TITLE> Quiz Ethernet </TITLE>
-		<link rel="icon" type="image/png" href="../images/ethernet.png"> <!-- Icone dans l'onglet -->
+<!--
+  ~ yasmf - Yet Another Simple MVC Framework (For PHP)
+  ~     Copyright (C) 2019   Franck SILVESTRE
+  ~
+  ~     This program is free software: you can redistribute it and/or modify
+  ~     it under the terms of the GNU Affero General Public License as published
+  ~     by the Free Software Foundation, either version 3 of the License, or
+  ~     (at your option) any later version.
+  ~
+  ~     This program is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~     GNU Affero General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU Affero General Public License
+  ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
 
-	</HEAD>
-	<BODY>
-    <?php
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+		<link href="css/style.css" rel="stylesheet"/>
+		<script src="jquery/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<TITLE> Quiz Réseaux </TITLE>
+		<link rel="icon" type="image/png" href="images/monitor.png"> <!-- Icone dans l'onglet -->
+
+	</head>
+<body>
+<?php
 spl_autoload_extensions(".php");
 spl_autoload_register();
 
@@ -58,6 +76,13 @@ use yasmf\HttpHelper;
                 <input type="submit" value="Ethernet">
               </form>
             </li>
+            <li>
+              <form action="index.php" method="post">
+                <input hidden name="action" value="contact">
+                <input hidden name="controller" value="">
+                <input type="submit" value="Contact">
+              </form>
+            </li>
 				  </ul>
           <!-- CONNEXION / INSCRIPTION A METTRE EN PLACE A LA FIN
 			    <ul class="nav navbar-nav navbar-right">
@@ -68,6 +93,7 @@ use yasmf\HttpHelper;
 		  </div>
 	  </nav>
   </header>
+  
 		<section>
 			<div class="container_fluid">
 				<div class="img_fond col-xs-12 center">

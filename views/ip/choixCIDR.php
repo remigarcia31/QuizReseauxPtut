@@ -16,19 +16,18 @@
   ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<!-- page qui permet de choisir si l'utilisateur veut s'entrainer avec un masque CIDR ou non -->
   <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Quiz IP</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
-	<script src="../jquery/jquery.min.js"></script>
-	<script src="../bootstrap/js/bootstrap.min.js"></script>
-	<link rel="icon" type="image/png" href="../images/ip.png"> <!-- Icone dans l'onglet -->
-	<link href="../css/styleip.css" rel="stylesheet"/>
-</head>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+		<link href="css/style.css" rel="stylesheet"/>
+		<script src="jquery/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<TITLE> Quiz Réseaux </TITLE>
+		<link rel="icon" type="image/png" href="images/monitor.png"> <!-- Icone dans l'onglet -->
+
+	</head>
 <body>
 <?php
 spl_autoload_extensions(".php");
@@ -37,7 +36,7 @@ spl_autoload_register();
 use yasmf\HttpHelper;
 ?>
 <!-- menu qui permet de naviguer entre les différentes pages du site -->
-<header>
+	<header>
     <nav class="navbar navbar-inverse navbar-darkblue">
 	    <div class="container-fluid">
         <div class="navbar-header">
@@ -77,6 +76,13 @@ use yasmf\HttpHelper;
                 <input type="submit" value="Ethernet">
               </form>
             </li>
+            <li>
+              <form action="index.php" method="post">
+                <input hidden name="action" value="contact">
+                <input hidden name="controller" value="">
+                <input type="submit" value="Contact">
+              </form>
+            </li>
 				  </ul>
           <!-- CONNEXION / INSCRIPTION A METTRE EN PLACE A LA FIN
 			    <ul class="nav navbar-nav navbar-right">
@@ -87,6 +93,7 @@ use yasmf\HttpHelper;
 		  </div>
 	  </nav>
   </header>
+  
     <h1> Quiz IP : Choix du type du masque </h1>
     <form action="index.php" method="post">
         <p>Avant de commencer le quiz, veuillez choisir si vous voulez un masque avec la notation CIDR ou non </p>

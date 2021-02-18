@@ -93,40 +93,114 @@ use yasmf\HttpHelper;
 		  </div>
 	  </nav>
   </header>
+		<!-- Formulaire de contact -->
+		<div class="container-fluid center">
+		<h1>Contact</h1>
+		<br/> <br/>
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div id="carre" >
+					<div class="formulaire" align="center">
+						<form method="post">
+							<table>
+									<tr>
+										<td align="right">
+											<label for="nom">Nom :</label>
+										</td>
+										<td>
+											<input type="text" placeholder="Votre nom" id="nom" name="nom" 
+														value="<?php if(isset($nom)) { echo $nom; } ?>" />
+										</td>
+									</tr>
+									<tr>
+										<td align="right">
+											<label for="email">Mail :</label>
+										</td>
+										<td>
+											<input type="text" placeholder="Votre adresse mail" id="mail" name="mail" 
+														value="<?php if(isset($mail)) { echo $mail; } ?>" />
+										</td>
+									</tr>
+									<tr>
+										<td align="right">
+											<label for="message">Message :</label>
+										</td>
+										<td>
+											<textarea  rows="4" cols="29" placeholder="Ici, votre message" 
+													id="message" name="message" > </textarea>
+										</td>
+									</tr>
 
-  <section>
-			<p>
-			<div class="container_fluid"> <!--Bande centrale-->
-				<div class="img_fond col-xs-12 center">
-					<br/><br/>
-					<h1>Mentions légales</h1>
-					<br/>
-					<h3>Consultez les mentions légales 
-						<br/>Informations concernant le site web et le groupe de projet.</h3>
-					<br/><br/><br/>
-				</div>
+									<tr>
+										<td></td>
+										<td align="center">
+											<br />
+											<button type="button submit" name="formcontact" 
+													class="btn btn-success">J'envoie</button>
+										</td>
+									</tr>
+								</table>
+						</form>
+						 <!-- Quand le formulaire est validé par la méthode de gestion des erreurs 
+						 			le message est envoyé au mail indiqué SINON un message d'erreur apparait -->
+						 <?php
+							$validation=0;
+							 if(isset($msg)) {
+								echo '<font color="red">'.$msg."</font>";
+								$validation = 1;
+							 }
+							 
+						 ?>
+						<?php
+							if($validation!=1) {
+								if(isset($_POST['message'])){
+									$entete  = 'MIME-Version: 1.0' . "\r\n";
+									$entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+									$entete .= 'From: ' . $_POST['mail'] . "\r\n";
+
+									$message = '<h1>Message envoyé depuis la page Contact de Quiz Projet tutoré </h1>
+									<p><b>Nom : </b>' . $_POST['nom'] . '<br>
+									<b>Email : </b>' . $_POST['mail'] . '<br>
+									<b>Message : </b>' . $_POST['message'] . '</p>';
+
+									$retour = mail('adam.khalepo@iut-rodez.fr', 'Envoi depuis page Contact', $message, $entete);
+									if($retour) {
+										echo '<p>Votre message a bien été envoyé.</p>';
+									}
+								}
+								$validation=0;
+							}
+
+						?>
+					</div>
+			    </div>
 			</div>
-			</p>
-			<div class="container"> <!--Container contenant les mentions légales du site internet-->
-                <div class="texte">
-				    <h2>Propriété intellectuelle</h2>
-					<p>Le site internet n'accepte pas et ne reçoit pas de fonds publicitaires.<br/>
-					Tout le contenu du site <a target="_blank" href="http://ptutquizz.alwaysdata.net/">http://ptutquizz.alwaysdata.net/</a> est libre de droit.<br/>
-					Les icones sont des images libres de droit récupérés sur le site <a target="_blank" href="https://www.flaticon.com/">https://www.flaticon.com/</a>
-					Toute reproduction, distribution, modification, retransmission ou publication de ces différents éléments est autorisée.
-					<br/><br/><br/>
-					<h2>Confidentialité des données personnelles</h2>
-					Les informations personnelles que vous fournissez sur le site, sont confidentielles.
-					Nous nous engageons sur l’honneur à respecter les conditions légales de confidentialité applicables en France et à ne pas divulguer ces informations à des tiers.
-					<br/><br/><br/>
-					<h2>Hébergement</h2>
-					SARL Alwaysdata - 91 rue du Faubourg Saint Honoré - 75008 Paris FRANCE
-					<br/><br/><br/>
-					<h2>Responsable de publication</h2>
-					Thomas GAFFET
-					</p>
-                </div>
-			</div>
-        </section>
+		</div>
+		<!-- pied de page -->
+        <footer>
+      <div class="container-fluid">
+        <div class="col-xs-12 col-sm-6 col-md-10">
+          <p>Ce site a été créé par des étudiants en DUT informatique 2ème année.</p>
+          <div class="col-xs-6">
+            <p>Pour plus d'informations, consultez les mentions légales.</p>
+            <form action="index.php" method="post">
+              <input hidden name="action" value="mentions">
+              <input hidden name="controller" value="Home">
+              <input type="submit" value="Mentions légales">
+            </form>
+          </div>	
+          <div class="col-xs-6">			
+            <p>Consultez également la manière dont son protegés vos données.</p>
+            <form action="index.php" method="post">
+              <input hidden name="action" value="protection">
+              <input hidden name="controller" value="Home">
+              <input type="submit" value="Protection des données">
+            </form>				
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-2">
+          <a href="https://www.iut-rodez.fr/" target="_blank"> <img src="images/logoIut.png" alt="Logo IUT de Rodez" class="img_iut"> </a> 
+        </div>
+      </div>
+    </footer>
 	</body>
 </HTML>

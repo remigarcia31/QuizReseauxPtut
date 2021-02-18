@@ -76,6 +76,13 @@ use yasmf\HttpHelper;
                 <input type="submit" value="Ethernet">
               </form>
             </li>
+            <li>
+              <form action="index.php" method="post">
+                <input hidden name="action" value="contact">
+                <input hidden name="controller" value="">
+                <input type="submit" value="Contact">
+              </form>
+            </li>
 				  </ul>
           <!-- CONNEXION / INSCRIPTION A METTRE EN PLACE A LA FIN
 			    <ul class="nav navbar-nav navbar-right">

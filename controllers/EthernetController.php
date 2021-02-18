@@ -26,7 +26,7 @@ use yasmf\View;
 class EthernetController
 {
     public function ethernet($pdo) {
-        $view = new View("views/ethernet");
+        $view = new View("QuizReseauxPtut/views/ethernet");
         return $view;
     }
 }
