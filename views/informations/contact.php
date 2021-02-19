@@ -21,7 +21,7 @@
 <head>
 		<meta charset="UTF-8"/>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-		<link href="css/style.css" rel="stylesheet"/>
+		<link href="css/style_contact.css" rel="stylesheet"/>
 		<script src="jquery/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<TITLE> Quiz Réseaux </TITLE>
@@ -34,6 +34,26 @@ spl_autoload_extensions(".php");
 spl_autoload_register();
 
 use yasmf\HttpHelper;
+
+if(isset($_POST['formcontact'])) { 
+   	$nom = htmlspecialchars($_POST['nom']);
+   	$mail = htmlspecialchars($_POST['mail']);
+	$message = htmlspecialchars($_POST['message']);
+   	if(!empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['message'])) {
+      	$messagelength = strlen($message);
+      	if(preg_match('/[-0-9a-zA-Z.+_]+@iut-rodez\.fr/i', $mail)) {
+      		if($messagelength >= 5 AND $messagelength <= 300) {
+            
+      		} else {
+         		$msg = "Votre message doit posseder au moins 5 caractères et ne pas dépasser 300 caractères !";
+         	}
+      	} else{
+      		$msg = "Votre adresse mail n'est pas valide ! (exemple@iut-rodez.fr)";
+      	}
+   	} else {
+     	$msg = "Tous les champs doivent être complétés !";
+   	}
+}
 ?>
 <!-- menu qui permet de naviguer entre les différentes pages du site -->
 	<header>
@@ -100,7 +120,7 @@ use yasmf\HttpHelper;
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<div id="carre" >
 					<div class="formulaire" align="center">
-						<form method="post">
+						<form action="index.php" method="post">
 							<table>
 									<tr>
 										<td align="right">
@@ -134,8 +154,9 @@ use yasmf\HttpHelper;
 										<td></td>
 										<td align="center">
 											<br />
-											<button type="button submit" name="formcontact" 
-													class="btn btn-success">J'envoie</button>
+											<input hidden name="action" value="contact">
+                							<input hidden name="controller" value="">
+											<button type="button submit" name="formcontact" class="btn btn-success">J'envoie</button>
 										</td>
 									</tr>
 								</table>
@@ -162,7 +183,7 @@ use yasmf\HttpHelper;
 									<b>Email : </b>' . $_POST['mail'] . '<br>
 									<b>Message : </b>' . $_POST['message'] . '</p>';
 
-									$retour = mail('adam.khalepo@iut-rodez.fr', 'Envoi depuis page Contact', $message, $entete);
+									$retour = mail('remi.garcia@iut-rodez.fr', 'Envoi depuis page Contact', $message, $entete);
 									if($retour) {
 										echo '<p>Votre message a bien été envoyé.</p>';
 									}
