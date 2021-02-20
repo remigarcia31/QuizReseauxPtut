@@ -21,7 +21,7 @@
 <head>
 		<meta charset="UTF-8"/>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-		<link href="css/style.css" rel="stylesheet"/>
+		<link href="css/style_mentions_donnees.css" rel="stylesheet"/>
 		<script src="jquery/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<TITLE> Quiz Réseaux </TITLE>
