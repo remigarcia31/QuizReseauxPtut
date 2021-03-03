@@ -34,6 +34,9 @@ spl_autoload_extensions(".php");
 spl_autoload_register();
 
 use yasmf\HttpHelper;
+
+$bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
+
 ?>
 <!-- menu qui permet de naviguer entre les différentes pages du site -->
 	<header>
@@ -94,17 +97,24 @@ use yasmf\HttpHelper;
 	  </nav>
   </header>
   
-		<section>
-			<div class="container_fluid">
-				<div class="img_fond col-xs-12 center">
-					<br/><br/>
-					<h1>PAGE EN COURS DE CONSTRUCTION</h1>
-					<br/>
-					<h3>Merci de revenir plus tard ! :)</h3>
-					<br/><br/><br/>
-				</div>
-			</div>
-		</section>
+  <h1> Quiz Ethernet</h1>
+    <?php
+        $leScenario = $bdd ->query('SELECT scenario FROM ethernet WHERE id_scenario = 1');
+        $scene = $leScenario->fetch();
+        echo $scene['scenario'];
+
+        if(isset($_POST["typeEthernet"])) {
+            $typeEthernet = $_POST["typeEthernet"];
+        }
+
+        if($typeEthernet == "TRAMES") {
+            echo "Trames";
+        }
+        if($typeEthernet == "CHRONO") {
+            echo "Chrono";
+        }
+
+    ?>
 		
 		<!-- pied de page -->
     <footer>

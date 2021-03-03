@@ -86,3 +86,10 @@ input[type=submit]:hover {
 input[type=text] {
     color: black;
 }
+
+.enonce
+{
+    text-align: left;
+    color:lightgreen;
+    margin-left: 15px;
+}
