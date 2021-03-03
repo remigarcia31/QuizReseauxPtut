@@ -26,7 +26,7 @@ use yasmf\View;
 class WifiController
 {
     public function wifi($pdo) {
-        $view = new View("views/wifi");
+        $view = new View("QuizReseauxPtut/views/wifi");
         return $view;
     }
 }

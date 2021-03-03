@@ -24,7 +24,7 @@ $dataSource = new DataSource(
     $port = '3306',
     $db = 'hello_world',
     $user = 'root',
-    $pass = '',
+    $pass = 'root',
     $charset = 'utf8mb4'
 );
 

@@ -27,18 +27,23 @@ class IpController
 {
     public function sayHello($pdo) {
         $name = HttpHelper::getParam('name') ?: 'no name' ;
-        $view = new View("views/hello_you");
+        $view = new View("QuizReseauxPtut/views/hello_you");
         $view->setVar('name',$name);
         return $view;
     }
 
     public function choixCIDR($pdo) {
-        $view = new View("views/ip/choixCIDR");
+        $view = new View("QuizReseauxPtut/views/ip/choixCIDR");
         return $view;
     }
 
     public function quizIP($pdo) {
-        $view = new View("views/ip/ip");
+        $view = new View("QuizReseauxPtut/views/ip/ip");
+        return $view;
+    }
+
+    public function correctionIP($pdo) {
+        $view = new View("QuizReseauxPtut/views/ip/correctionIP");
         return $view;
     }
 }

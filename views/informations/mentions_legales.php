@@ -18,16 +18,16 @@
 
   <!DOCTYPE html>
 <html lang="en">
-<HEAD>
-		<meta charset="utf-8" />
-		<link href="../css/style.css" rel="stylesheet"/>
-		<link href="../css/style_mentions_donnees.css" rel="stylesheet"/>
-		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
-		<script src="../jquery/jquery.min.js"></script>
-		<script src="../bootstrap/js/bootstrap.min.js"></script>
-		<TITLE> Mentions Légales </TITLE>
-		<link rel="icon" type="image/png" href="../images/monitor.png"> <!-- Icone dans l'onglet -->
-	</HEAD>
+<head>
+		<meta charset="UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+		<link href="css/style_mentions_donnees.css" rel="stylesheet"/>
+		<script src="jquery/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<TITLE> Quiz Réseaux </TITLE>
+		<link rel="icon" type="image/png" href="images/monitor.png"> <!-- Icone dans l'onglet -->
+
+	</head>
 <body>
 <?php
 spl_autoload_extensions(".php");
@@ -74,6 +74,13 @@ use yasmf\HttpHelper;
                 <input hidden name="action" value="ethernet">
                 <input hidden name="controller" value="Ethernet">
                 <input type="submit" value="Ethernet">
+              </form>
+            </li>
+            <li>
+              <form action="index.php" method="post">
+                <input hidden name="action" value="contact">
+                <input hidden name="controller" value="">
+                <input type="submit" value="Contact">
               </form>
             </li>
 				  </ul>

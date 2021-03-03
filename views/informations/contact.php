@@ -21,7 +21,7 @@
 <head>
 		<meta charset="UTF-8"/>
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-		<link href="css/style.css" rel="stylesheet"/>
+		<link href="css/style_contact.css" rel="stylesheet"/>
 		<script src="jquery/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<TITLE> Quiz Réseaux </TITLE>
@@ -34,6 +34,26 @@ spl_autoload_extensions(".php");
 spl_autoload_register();
 
 use yasmf\HttpHelper;
+
+if(isset($_POST['formcontact'])) { 
+   	$nom = htmlspecialchars($_POST['nom']);
+   	$mail = htmlspecialchars($_POST['mail']);
+	$message = htmlspecialchars($_POST['message']);
+   	if(!empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['message'])) {
+      	$messagelength = strlen($message);
+      	if(preg_match('/[-0-9a-zA-Z.+_]+@iut-rodez\.fr/i', $mail)) {
+      		if($messagelength >= 5 AND $messagelength <= 300) {
+            
+      		} else {
+         		$msg = "Votre message doit posseder au moins 5 caractères et ne pas dépasser 300 caractères !";
+         	}
+      	} else{
+      		$msg = "Votre adresse mail n'est pas valide ! (exemple@iut-rodez.fr)";
+      	}
+   	} else {
+     	$msg = "Tous les champs doivent être complétés !";
+   	}
+}
 ?>
 <!-- menu qui permet de naviguer entre les différentes pages du site -->
 	<header>
@@ -93,21 +113,91 @@ use yasmf\HttpHelper;
 		  </div>
 	  </nav>
   </header>
-  
-		<section>
-			<div class="container_fluid">
-				<div class="img_fond col-xs-12 center">
-					<br/><br/>
-					<h1>PAGE EN COURS DE CONSTRUCTION</h1>
-					<br/>
-					<h3>Merci de revenir plus tard ! :)</h3>
-					<br/><br/><br/>
-				</div>
+		<!-- Formulaire de contact -->
+		<div class="container-fluid center">
+		<h1>Contact</h1>
+		<br/> <br/>
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div id="carre" >
+					<div class="formulaire" align="center">
+						<form action="index.php" method="post">
+							<table>
+									<tr>
+										<td align="right">
+											<label for="nom">Nom :</label>
+										</td>
+										<td>
+											<input type="text" placeholder="Votre nom" id="nom" name="nom" 
+														value="<?php if(isset($nom)) { echo $nom; } ?>" />
+										</td>
+									</tr>
+									<tr>
+										<td align="right">
+											<label for="email">Mail :</label>
+										</td>
+										<td>
+											<input type="text" placeholder="Votre adresse mail" id="mail" name="mail" 
+														value="<?php if(isset($mail)) { echo $mail; } ?>" />
+										</td>
+									</tr>
+									<tr>
+										<td align="right">
+											<label for="message">Message :</label>
+										</td>
+										<td>
+											<textarea  rows="4" cols="29" placeholder="Ici, votre message" 
+													id="message" name="message" > </textarea>
+										</td>
+									</tr>
+
+									<tr>
+										<td></td>
+										<td align="center">
+											<br />
+											<input hidden name="action" value="contact">
+                							<input hidden name="controller" value="">
+											<button type="button submit" name="formcontact" class="btn btn-success">J'envoie</button>
+										</td>
+									</tr>
+								</table>
+						</form>
+						 <!-- Quand le formulaire est validé par la méthode de gestion des erreurs 
+						 			le message est envoyé au mail indiqué SINON un message d'erreur apparait -->
+						 <?php
+							$validation=0;
+							 if(isset($msg)) {
+								echo '<font color="red">'.$msg."</font>";
+								$validation = 1;
+							 }
+							 
+						 ?>
+						<?php
+							if($validation!=1) {
+								if(isset($_POST['message'])){
+									$entete  = 'MIME-Version: 1.0' . "\r\n";
+									$entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+									$entete .= 'From: ' . $_POST['mail'] . "\r\n";
+
+									$message = '<h1>Message envoyé depuis la page Contact de Quiz Projet tutoré </h1>
+									<p><b>Nom : </b>' . $_POST['nom'] . '<br>
+									<b>Email : </b>' . $_POST['mail'] . '<br>
+									<b>Message : </b>' . $_POST['message'] . '</p>';
+
+									$retour = mail('remi.garcia@iut-rodez.fr', 'Envoi depuis page Contact', $message, $entete);
+									if($retour) {
+										echo '<p>Votre message a bien été envoyé.</p>';
+									}
+								}
+								$validation=0;
+							}
+
+						?>
+					</div>
+			    </div>
 			</div>
-		</section>
-		
+		</div>
 		<!-- pied de page -->
-    <footer>
+        <footer>
       <div class="container-fluid">
         <div class="col-xs-12 col-sm-6 col-md-10">
           <p>Ce site a été créé par des étudiants en DUT informatique 2ème année.</p>
@@ -133,5 +223,5 @@ use yasmf\HttpHelper;
         </div>
       </div>
     </footer>
-	</BODY>
+	</body>
 </HTML>

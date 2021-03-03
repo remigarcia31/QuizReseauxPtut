@@ -44,17 +44,22 @@ class HomeController
 {
 
     public function accueil($pdo) {
-        $view = new View("views/accueil");
+        $view = new View("QuizReseauxPtut/views/accueil");
         return $view;
     }
 
     public function mentions($pdo) {
-        $view = new View("views/informations/mentions_legales");
+        $view = new View("QuizReseauxPtut/views/informations/mentions_legales");
         return $view;
     }
 
     public function protection($pdo) {
-        $view = new View("views/informations/protection_donnees");
+        $view = new View("QuizReseauxPtut/views/informations/protection_donnees");
+        return $view;
+    }
+
+    public function contact($pdo) {
+        $view = new View("QuizReseauxPtut/views/informations/contact");
         return $view;
     }
 
