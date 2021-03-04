@@ -127,3 +127,13 @@ input[type=text] {
     text-align: left;
     font-weight: bold;
 }
+
+.faux
+{
+    color:red;
+}
+
+.correct
+{
+    color:green;
+}
