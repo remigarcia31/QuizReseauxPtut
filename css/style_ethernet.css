@@ -16,7 +16,7 @@ body
     background-repeat: no-repeat;
     background-attachment: fixed;
     background: rgb(0,71,96);
-    background: radial-gradient(circle, rgba(0,71,96,1) 0%, rgba(3,22,54,1) 100%);
+    background: radial-gradient(circle, #555555 0%, rgba(3,22,54,1) 100%);
 }
 
 footer
@@ -39,6 +39,7 @@ footer
     z-index: 1;
 
 } 
+
 
 .img_fond
 {
