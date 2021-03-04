@@ -238,7 +238,7 @@ use yasmf\HttpHelper;
 
     echo "<h2> Vous avez eu $note/6 </h2>";
     ?>
-
+    <br/>
     <form action="index.php" method="post">
         <input hidden name="action" value="ethernet">
         <input hidden name="controller" value="Ethernet">
