@@ -93,7 +93,7 @@ use yasmf\HttpHelper;
 <div class="container-fluid">
     <br/>
     <br/>
-    <p>Correction</p>
+    <h2>Correction</h2>
     <br/>
     <table class="container" border="2">
         <thead>
@@ -111,6 +111,8 @@ use yasmf\HttpHelper;
 
         $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
         $maRequete = $bdd->query('SELECT * from ethernet where id_scenario = 1');
+
+        $note = 0;
 
         while ($ligne = $maRequete->fetch()) {
             echo "<tr>";
@@ -135,7 +137,7 @@ use yasmf\HttpHelper;
             echo "<br/>";
             echo "<br/>";
             echo " <br/>";
-            echo "<p>Votre réponse</p>";
+            echo "<h2>Votre réponse</h2>";
             echo "<br/>";
             echo "<table class=\"container\" border=\"2\">";
             echo "<thead>";
@@ -155,30 +157,35 @@ use yasmf\HttpHelper;
 
             if ($_POST['macdest1'] == $ligne['macdest1']) {
                 echo "<td>" . $_POST['macdest1'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['macdest1'] . "</p></td>";
             }
 
             if ($_POST['macexp1'] == $ligne['macdexp1']) {
                 echo "<td>" . $_POST['macexp1'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['macexp1'] . "</p></td>";
             }
 
             if ($_POST['type1'] == $ligne['type1']) {
                 echo "<td>" . $_POST['type1'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['type1'] . "</p></td>";
             }
 
             if ($_POST['data1'] == $ligne['data1']) {
                 echo "<td>" . $_POST['data1'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['data1'] . "</p></td>";
             }
 
             if ($_POST['fcs1'] == $ligne['FCS']) {
                 echo "<td>" . $_POST['fcs1'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['fcs1'] . "</p></td>";
             }
@@ -189,30 +196,35 @@ use yasmf\HttpHelper;
             echo "<td>T3</td>";
             if ($_POST['macdest2'] == $ligne['macdest2']) {
                 echo "<td>" . $_POST['macdest2'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['macdest2'] . "</p></td>";
             }
 
             if ($_POST['macexp2'] == $ligne['macdexp2']) {
                 echo "<td>" . $_POST['macexp2'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['macexp2'] . "</p></td>";
             }
 
             if ($_POST['type2'] == $ligne['type2']) {
                 echo "<td>" . $_POST['type2'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['type2'] . "</p></td>";
             }
 
             if ($_POST['data2'] == $ligne['data2']) {
                 echo "<td>" . $_POST['data2'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['data2'] . "</p></td>";
             }
 
             if ($_POST['fcs2'] == $ligne['FCS']) {
                 echo "<td>" . $_POST['fcs2'] . "</td>";
+                $note++;
             } else {
                 echo "<td><p style=\"color:#FF0000\";>" . $_POST['fcs2'] . "</p></td>";
             }
@@ -221,6 +233,11 @@ use yasmf\HttpHelper;
         ?>
     </table>
     </form>
+
+    <?php 
+
+    echo "<h2> Vous avez eu $note/6 </h2>";
+    ?>
 
     <form action="index.php" method="post">
         <input hidden name="action" value="ethernet">

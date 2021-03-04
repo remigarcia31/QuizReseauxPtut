@@ -103,6 +103,7 @@ input[type=text] {
 .container td {
     font-weight: normal;
     font-size: 1em;
+    text-align: center;
 }
 
 .container {
@@ -121,6 +122,7 @@ input[type=text] {
 }
 
 .enonce {
-    color: lightgreen;
-    text-align: justify;
+    color: beige;
+    text-align: left;
+    font-weight: bold;
 }

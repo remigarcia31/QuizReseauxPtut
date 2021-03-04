@@ -102,8 +102,8 @@ use yasmf\HttpHelper;
     <div>
         <?php
         $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
-        /*On va chercher le mail de l'utilisateur*/
-        $leScenario = $bdd->query('SELECT scenario FROM ethernet WHERE id_scenario = 1');
+        $num_scenario = rand(1,1); //A MODIFIER EN FONCTION DU NOMBRE DE SCENARIOS DISPONIBLES
+        $leScenario = $bdd->query("SELECT scenario FROM ethernet WHERE id_scenario = $num_scenario");
         /* On récupère l'information*/
         $scene = $leScenario->fetch();
         echo $scene['scenario'];
@@ -124,33 +124,33 @@ use yasmf\HttpHelper;
         <table class="container" border="2">
             <thead>
             <tr>
-                <th><h1>Trames</h1></th>
-                <th><h1>@ MAC dest</h1></th>
-                <th><h1>@ MAC exp</h1></th>
-                <th><h1>TYPE</h1></th>
-                <th><h1>DATA</h1></th>
-                <th><h1>FCS </h1></th>
+                <th><h3>Trames</h3></th>
+                <th><h3>@ MAC dest</h3></th>
+                <th><h3>@ MAC exp</h3></th>
+                <th><h3>TYPE</h3></th>
+                <th><h3>DATA</h3></th>
+                <th><h3>FCS </h3></th>
             </tr>
             </thead>
             <tbody>
 
-            <h1>Remplissez la trame suivante : </h1>
+            <h1>Complétez la trame suivante : </h1>
 
             <tr>
                 <td>T1</td>
-                <td><input type="text" name="macdest1"/></td>
-                <td><input type="text" name="macexp1"/></td>
-                <td><input type="text" name="type1"/></td>
-                <td><input type="text" name="data1"/></td>
-                <td><input type="text" name="fcs1"/></td>
+                <td><input type="text" name="macdest1" required/></td>
+                <td><input type="text" name="macexp1" required/></td>
+                <td><input type="text" name="type1" required/></td>
+                <td><input type="text" name="data1" required/></td>
+                <td><input type="text" name="fcs1" required/></td>
             </tr>
             <tr>
                 <td>T3</td>
-                <td><input type="text" name="macdest2"/></td>
-                <td><input type="text" name="macexp2"/></td>
-                <td><input type="text" name="type2"/></td>
-                <td><input type="text" name="data2"/></td>
-                <td><input type="text" name="fcs2"/></td>
+                <td><input type="text" name="macdest2" required/></td>
+                <td><input type="text" name="macexp2" required/></td>
+                <td><input type="text" name="type2" required/></td>
+                <td><input type="text" name="data2" required/></td>
+                <td><input type="text" name="fcs2" required/></td>
             </tr>
             </tbody>
 
