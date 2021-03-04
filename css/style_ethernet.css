@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+html
+{
+    height: 100%;
+}
+
+body 
+{
+    font-family: 'Raleway', sans-serif!important;
+    color: white!important;
+    text-align: center!important;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: rgb(0,71,96);
+    background: radial-gradient(circle, rgba(0,71,96,1) 0%, rgba(3,22,54,1) 100%);
+}
+
+footer
+{
+    background-color: #031636!important;
+    position: absolute!important;
+    bottom:0%!important;
+    width:100%!important;
+    padding-top:50px!important;
+    z-index: 1;
+
+}
+
+.center {
+    position: absolute!important;
+    bottom:40%!important;
+    width: 100%!important;
+    padding-top: 50px!important;
+    color: black;
+    z-index: 1;
+
+} 
+
+.img_fond
+{
+    background-image: url("../images/imagedefond.png")!important;
+    background-repeat: repeat!important;
+    width: 100%;
+
+}   
+
+.img_iut
+{
+    border-radius: 5px!important;
+    width: 175px!important;
+    margin-bottom: 35px;
+}
+
+.navbar-darkblue
+{
+    background-color: #031636!important;
+    position: relative;
+    z-index: 2;
+}
+
+h1
+{
+    font-weight: 500;
+}
+
+
+input[type=submit] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    transition-duration: 0.4s;
+    margin: 5px;
+    background-color: #031636;
+    color: white;
+    border: 2px solid #031636;
+  }
+
+input[type=submit]:hover {
+    background-color: #555555;
+    color: white;
+}
+
+input[type=text] {
+    color: black;
+}
+
+.container th h1 {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    color: white;
+}
+
+.container th {
+    font-size: 2em;
+    background-color: #555555;
+}
+
+.container td {
+    font-weight: normal;
+    font-size: 1em;
+}
+
+.container {
+    text-align: left;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+    display: table;
+    padding: 0 0 8em 0;
+}
+
+.container td, .container th {
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left:2%;
+}
+
+.enonce {
+    color: lightgreen;
+    text-align: justify;
+}

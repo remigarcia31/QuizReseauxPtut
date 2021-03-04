@@ -19,13 +19,13 @@
   <!DOCTYPE html>
 <html lang="en">
 <head>
-		<meta charset="UTF-8"/>
-		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-		<link href="css/style.css" rel="stylesheet"/>
-		<script src="jquery/jquery.min.js"></script>
-		<script src="bootstrap/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <link href="css/style_ethernet.css" rel="stylesheet"/>
+    <script src="jquery/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 		<TITLE> Quiz Réseaux </TITLE>
-		<link rel="icon" type="image/png" href="images/monitor.png"> <!-- Icone dans l'onglet -->
+		<link rel="icon" type="image/png" href="images/ethernet.png"> <!-- Icone dans l'onglet -->
 
 	</head>
 <body>
@@ -34,10 +34,8 @@ spl_autoload_extensions(".php");
 spl_autoload_register();
 
 use yasmf\HttpHelper;
-
-$bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
-
 ?>
+
 <!-- menu qui permet de naviguer entre les différentes pages du site -->
 	<header>
     <nav class="navbar navbar-inverse navbar-darkblue">
@@ -98,50 +96,77 @@ $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 
   </header>
   
   <h1> Quiz Ethernet</h1>
-    <?php
-        $leScenario = $bdd ->query('SELECT scenario FROM ethernet WHERE id_scenario = 1');
+  <div class="container-fluid">
+    <br/>
+    <br/>
+    <div>
+        <?php
+        $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
+        /*On va chercher le mail de l'utilisateur*/
+        $leScenario = $bdd->query('SELECT scenario FROM ethernet WHERE id_scenario = 1');
+        /* On récupère l'information*/
         $scene = $leScenario->fetch();
         echo $scene['scenario'];
+        ?>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <?php
+      if(isset($_POST["typeEthernet"])) {
+        $typeEthernet = $_POST["typeEthernet"];
+      }
+      if($typeEthernet == "TRAMES") {
+      //on affiche la trame à résoudre si l'user à choisit la trame ?> 
+    <form action="index.php" method="post">
+        <input hidden name="action" value="correction">
+        <input hidden name="controller" value="ethernet">
+        <table class="container" border="2">
+            <thead>
+            <tr>
+                <th><h1>Trames</h1></th>
+                <th><h1>@ MAC dest</h1></th>
+                <th><h1>@ MAC exp</h1></th>
+                <th><h1>TYPE</h1></th>
+                <th><h1>DATA</h1></th>
+                <th><h1>FCS </h1></th>
+            </tr>
+            </thead>
+            <tbody>
 
-        if(isset($_POST["typeEthernet"])) {
-            $typeEthernet = $_POST["typeEthernet"];
-        }
+            <h1>Remplissez la trame suivante : </h1>
 
-        if($typeEthernet == "TRAMES") {
-            echo "Trames";
-        }
-        if($typeEthernet == "CHRONO") {
-            echo "Chrono";
-        }
+            <tr>
+                <td>T1</td>
+                <td><input type="text" name="macdest1"/></td>
+                <td><input type="text" name="macexp1"/></td>
+                <td><input type="text" name="type1"/></td>
+                <td><input type="text" name="data1"/></td>
+                <td><input type="text" name="fcs1"/></td>
+            </tr>
+            <tr>
+                <td>T3</td>
+                <td><input type="text" name="macdest2"/></td>
+                <td><input type="text" name="macexp2"/></td>
+                <td><input type="text" name="type2"/></td>
+                <td><input type="text" name="data2"/></td>
+                <td><input type="text" name="fcs2"/></td>
+            </tr>
+            </tbody>
 
+        </table>
+        <input type="submit" value="Envoyer la réponse">
+    </form>
+
+    <?php
+      } else if ($typeEthernet == "CHRONO") {
     ?>
-		
-		<!-- pied de page -->
-    <footer>
-      <div class="container-fluid">
-        <div class="col-xs-12 col-sm-6 col-md-10">
-          <p>Ce site a été créé par des étudiants en DUT informatique 2ème année.</p>
-          <div class="col-xs-6">
-            <p>Pour plus d'informations, consultez les mentions légales.</p>
-            <form action="index.php" method="post">
-              <input hidden name="action" value="mentions">
-              <input hidden name="controller" value="Home">
-              <input type="submit" value="Mentions légales">
-            </form>
-          </div>	
-          <div class="col-xs-6">			
-            <p>Consultez également la manière dont son protegés vos données.</p>
-            <form action="index.php" method="post">
-              <input hidden name="action" value="protection">
-              <input hidden name="controller" value="Home">
-              <input type="submit" value="Protection des données">
-            </form>				
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-2">
-          <a href="https://www.iut-rodez.fr/" target="_blank"> <img src="images/logoIut.png" alt="Logo IUT de Rodez" class="img_iut"> </a> 
-        </div>
-      </div>
-    </footer>
+    <!-- completer et rajouter l'affichage d'un chronogramme à résoudre -->
+    <p>Mettre le chronogramme</p>
+    <?php
+      }
+    ?>
+</div>
+
 	</BODY>
 </HTML>

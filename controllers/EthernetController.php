@@ -34,4 +34,9 @@ class EthernetController
         $view = new View("QuizReseauxPtut/views/ethernet/quizEthernet");
         return $view;
     }
+
+    public function correction($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/correctionEthernet");
+        return $view;
+    }
 }
