@@ -102,7 +102,7 @@ use yasmf\HttpHelper;
     <div>
         <?php
         $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
-        $num_scenario = rand(1,1); //A MODIFIER EN FONCTION DU NOMBRE DE SCENARIOS DISPONIBLES
+        $num_scenario = rand(1,3); //A MODIFIER EN FONCTION DU NOMBRE DE SCENARIOS DISPONIBLES
         $leScenario = $bdd->query("SELECT scenario FROM ethernet WHERE id_scenario = $num_scenario");
         /* On récupère l'information*/
         $scene = $leScenario->fetch();
@@ -155,6 +155,7 @@ use yasmf\HttpHelper;
             </tbody>
 
         </table>
+        <input name="num_scenario" value="<?php echo $num_scenario; ?>" hidden>
         <input type="submit" value="Envoyer la réponse">
     </form>
 
