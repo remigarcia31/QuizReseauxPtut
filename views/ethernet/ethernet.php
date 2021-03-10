@@ -116,7 +116,7 @@ function yesnoCheck() {
             <div id="ifYes" style="display:none" class="typeChronogramme">
               <br>
               <label for="PARTAGE">Chronogramme partagé</label>
-              <input type="radio" name="typeChrono" value="PARTAGE"> </br>
+              <input type="radio" name="typeChrono" value="PARTAGE" checked></br>
               <label for="COMMUTE">Chronogramme commuté</label>
               <input type="radio" name="typeChrono" value="COMMUTE"> </br>
             </div>
