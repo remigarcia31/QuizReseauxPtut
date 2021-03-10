@@ -116,6 +116,7 @@ use yasmf\HttpHelper;
       if(isset($_POST["typeEthernet"])) {
         $typeEthernet = $_POST["typeEthernet"];
       }
+
       if($typeEthernet == "TRAMES") {
       //on affiche la trame à résoudre si l'user à choisit la trame ?> 
     <form action="index.php" method="post">
@@ -161,11 +162,22 @@ use yasmf\HttpHelper;
 
     <?php
       } else if ($typeEthernet == "CHRONO") {
+        if(isset($_POST["typeChrono"])) {
+          $typeChrono = $_POST["typeChrono"];
+        
+        if ($typeChrono == "COMMUTE") {
+          echo "commuté";
+        } else if ($typeChrono == "PARTAGE") {
+          echo "partagé";
+        } else {
+          echo "rien n'est sélectionné";
+        }
     ?>
     <!-- completer et rajouter l'affichage d'un chronogramme à résoudre -->
     <p>Mettre le chronogramme</p>
     <?php
       }
+    }
     ?>
 </div>
 

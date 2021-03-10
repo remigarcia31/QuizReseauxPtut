@@ -94,13 +94,32 @@ use yasmf\HttpHelper;
 	  </nav>
   </header>
   
+  <script type="text/javascript">
+
+function yesnoCheck() {
+    if (document.getElementById('yesCheck').checked) {
+        document.getElementById('ifYes').style.display = 'block';
+    }
+    else document.getElementById('ifYes').style.display = 'none';
+
+}
+
+</script>
+
   <h1> Quiz Ethernet : Choix du type du quizz </h1>
     <form action="index.php" method="post">
         <p>Avant de commencer le quiz, veuillez choisir si vous voulez vous entrainer avec des trames ou bien avec des chronogrammes :</p>
             <label for="TRAMES">Avec des trames Ethernet </label>
-            <input type="radio" name="typeEthernet" value="TRAMES" required> </br>
+            <input type="radio" name="typeEthernet" value="TRAMES" onclick="javascript:yesnoCheck()" name="yesno" id="noCheck" required> </br>
             <label for="CHRONO">Avec des chronogrammes Ethernet</label>
-            <input type="radio" name="typeEthernet" value="CHRONO">
+            <input type="radio" name="typeEthernet" value="CHRONO" onclick="javascript:yesnoCheck()" name="yesno" id="yesCheck">
+            <div id="ifYes" style="display:none" class="typeChronogramme">
+              <br>
+              <label for="PARTAGE">Chronogramme partagé</label>
+              <input type="radio" name="typeChrono" value="PARTAGE"> </br>
+              <label for="COMMUTE">Chronogramme commuté</label>
+              <input type="radio" name="typeChrono" value="COMMUTE"> </br>
+            </div>
             <input hidden name="action" value="quizEthernet">
             <input hidden name="controller" value="Ethernet">
             <br/><br/>
