@@ -39,4 +39,10 @@ class EthernetController
         $view = new View("QuizReseauxPtut/views/ethernet/correctionEthernet");
         return $view;
     }
+
+    public function correctionChronogramme($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/correctionEthernetChronogramme");
+        return $view;
+    }
+
 }
