@@ -98,7 +98,7 @@ input[type=text] {
 
 .container th {
     font-size: 2em;
-    background-color: #555555;
+
 }
 
 .container td {
@@ -108,9 +108,9 @@ input[type=text] {
 }
 
 .container {
-    text-align: left;
+    text-align: center;
     overflow: hidden;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     display: table;
     padding: 0 0 8em 0;
@@ -123,9 +123,14 @@ input[type=text] {
     text-align: center;
 }
 
+.machine{
+    color: black;
+}
+
+
 .enonce {
     color: beige;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
 }
 
