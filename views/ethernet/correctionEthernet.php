@@ -108,56 +108,59 @@ use yasmf\HttpHelper;
         </thead>
         <?php
 
-        if(isset($_POST['num_scenario'])) {
+        if (isset($_POST['num_scenario'])) {
             $num_scenario = $_POST['num_scenario'];
         }
-        
+
         $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
         $maRequete = $bdd->query("SELECT * FROM ethernet WHERE id_scenario = $num_scenario");
 
         $note = 0;
 
         while ($ligne = $maRequete->fetch()) {
-            echo "<tr>";
-            echo "<td>T1</td>";
+        ?>
+        <tr>
+            <td>T1</td>
+            <?php
             echo "<td>" . $ligne['macdest1'] . "</td>";
             echo "<td>" . $ligne['macdexp1'] . "</td>";
             echo "<td>" . $ligne['type1'] . "</td>";
             echo "<td>" . $ligne['data1'] . "</td>";
             echo "<td>" . $ligne['FCS'] . "</td>";
-            echo "</tr>";
-            echo "<tr>";
-            echo "<td>T3</td>";
+            ?>
+        </tr>
+        <tr>
+            <td>T3</td>
+            <?php
             echo "<td>" . $ligne['macdest2'] . "</td>";
             echo "<td>" . $ligne['macdexp2'] . "</td>";
             echo "<td>" . $ligne['type2'] . "</td>";
             echo "<td>" . $ligne['data2'] . "</td>";
             echo "<td>" . $ligne['FCS'] . "</td>";
             echo "</tr>";
+            ?>
 
+    </table>
+    <br/>
+    <br/>
+    <br/>
+    <h2>Votre réponse</h2>
+    <br/>
+    <table class="container" border="2">
+        <thead>
+        <tr>
+            <th><h1>Trames</h1></th>
+            <th><h1>@ MAC dest</h1></th>
+            <th><h1>@ MAC exp</h1></th>
+            <th><h1>TYPE</h1></th>
+            <th><h1>DATA</h1></th>
+            <th><h1>FCS </h1></th>
+        </tr>
+        </thead>
+        <tr>
+            <td>T1</td>
 
-            echo "</table>";
-            echo "<br/>";
-            echo "<br/>";
-            echo " <br/>";
-            echo "<h2>Votre réponse</h2>";
-            echo "<br/>";
-            echo "<table class=\"container\" border=\"2\">";
-            echo "<thead>";
-            echo "<tr>";
-            echo "<th><h1>Trames</h1></th>";
-            echo "<th><h1>@ MAC dest</h1></th>";
-            echo "<th><h1>@ MAC exp</h1></th>";
-            echo "<th><h1>TYPE</h1></th>";
-            echo "<th><h1>DATA</h1></th>";
-            echo "<th><h1>FCS </h1></th>";
-            echo "</tr>";
-            echo "</thead>";
-
-            echo "<tr>";
-            echo "<td>T1</td>";
-
-
+            <?php
             if ($_POST['macdest1'] == $ligne['macdest1']) {
                 echo "<td><p class=\"correct\";>" . $_POST['macdest1'] . "</td>";
                 $note++;
@@ -192,11 +195,11 @@ use yasmf\HttpHelper;
             } else {
                 echo "<td><p class=\"faux\";>" . $_POST['fcs1'] . "</p></td>";
             }
-
-            echo "</tr>";
-
-            echo "<tr>";
-            echo "<td>T3</td>";
+            ?>
+        </tr>
+        <tr>
+            <td>T3</td>
+            <?php
             if ($_POST['macdest2'] == $ligne['macdest2']) {
                 echo "<td><p class=\"correct\";>" . $_POST['macdest2'] . "</td>";
                 $note++;
@@ -231,13 +234,13 @@ use yasmf\HttpHelper;
             } else {
                 echo "<td><p class=\"faux\";>" . $_POST['fcs2'] . "</p></td>";
             }
-            echo "</tr>";
-        }
-        ?>
+            }
+            ?>
+        </tr>
     </table>
     </form>
 
-    <?php 
+    <?php
 
     echo "<h2> Vous avez eu $note/10 </h2>";
     ?>
