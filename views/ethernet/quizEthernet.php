@@ -103,7 +103,10 @@ use yasmf\HttpHelper;
     <div>
         <?php
         $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
-        $num_scenario = rand(1, 4); //A MODIFIER EN FONCTION DU NOMBRE DE SCENARIOS DISPONIBLES
+        $nbScenario = $bdd->query("SELECT COUNT(*) as nombre FROM ethernet");
+        $requete = $nbScenario->fetch();
+        $nombreScenarios = $requete["nombre"];
+        $num_scenario = rand(1, $nombreScenarios); //A MODIFIER EN FONCTION DU NOMBRE DE SCENARIOS DISPONIBLES
         $leScenario = $bdd->query("SELECT scenario FROM ethernet WHERE id_scenario = $num_scenario");
         /* On récupère l'information*/
         $scene = $leScenario->fetch();
@@ -167,7 +170,7 @@ use yasmf\HttpHelper;
         <!-- completer et rajouter l'affichage d'un chronogramme à résoudre -->
         <form action="index.php" method="post">
             <input hidden name="action" value="correctionChronogramme">
-            <input hidden name="controller" value="ethernet">
+            <input hidden name="controller" value="Ethernet">
             <table class="container">
                 <thead>
                 <tr>

@@ -84,6 +84,15 @@ use yasmf\HttpHelper;
               </form>
             </li>
 				  </ul>
+          <ul class="nav navbar-nav navbar-right">
+				            <li>
+                      <form action="index.php" method="post">
+                        <input hidden name="action" value="ajoutScenario">
+                        <input hidden name="controller" value="ethernet">
+                        <input type="submit" value="Ajout scénario">
+                      </form>
+                    </li>
+				        </ul>
           <!-- CONNEXION / INSCRIPTION A METTRE EN PLACE A LA FIN
 			    <ul class="nav navbar-nav navbar-right">
 			      <li><a href="pages/inscription.php"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>

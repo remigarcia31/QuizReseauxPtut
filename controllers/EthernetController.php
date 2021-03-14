@@ -45,4 +45,9 @@ class EthernetController
         return $view;
     }
 
+    public function ajoutScenario($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/ajoutScenario");
+        return $view;
+    }
+
 }
