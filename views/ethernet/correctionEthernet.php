@@ -126,7 +126,7 @@ use yasmf\HttpHelper;
             echo "<td>" . $ligne['macdexp1'] . "</td>";
             echo "<td>" . $ligne['type1'] . "</td>";
             echo "<td>" . $ligne['data1'] . "</td>";
-            echo "<td>" . $ligne['FCS'] . "</td>";
+            echo "<td>" . $ligne['FCS1'] . "</td>";
             ?>
         </tr>
         <tr>
@@ -136,7 +136,7 @@ use yasmf\HttpHelper;
             echo "<td>" . $ligne['macdexp2'] . "</td>";
             echo "<td>" . $ligne['type2'] . "</td>";
             echo "<td>" . $ligne['data2'] . "</td>";
-            echo "<td>" . $ligne['FCS'] . "</td>";
+            echo "<td>" . $ligne['FCS2'] . "</td>";
             echo "</tr>";
             ?>
 
@@ -189,7 +189,7 @@ use yasmf\HttpHelper;
                 echo "<td><p class=\"faux\";>" . $_POST['data1'] . "</p></td>";
             }
 
-            if ($_POST['fcs1'] == $ligne['FCS']) {
+            if ($_POST['fcs1'] == $ligne['FCS1']) {
                 echo "<td><p class=\"correct\";>" . $_POST['fcs1'] . "</td>";
                 $note++;
             } else {
@@ -228,7 +228,7 @@ use yasmf\HttpHelper;
                 echo "<td><p class=\"faux\";>" . $_POST['data2'] . "</p></td>";
             }
 
-            if ($_POST['fcs2'] == $ligne['FCS']) {
+            if ($_POST['fcs2'] == $ligne['FCS2']) {
                 echo "<td><p class=\"correct\";>" . $_POST['fcs2'] . "</td>";
                 $note++;
             } else {

@@ -99,14 +99,49 @@
     </nav>
   </header>
 
-
   <h1> Quiz Ethernet : Ajout de scénario </h1>
+  
+  <?php
+  if (isset($_POST)) {
+    if (isset($_POST["supprimerScenar"])) { //Si l'utilisateur à cliqué sur un des boutons pour supprimer le scénario
+      $ScenarioDelete = $_POST["supprimerScenar"];
+      $delete = $bdd->query("DELETE FROM ethernet WHERE id_scenario = $ScenarioDelete");
+    } else if (isset($_POST["scenario"])) { //si l'utilisateur à cliqué sur le bouton pour ajouter un scénario
+      $scenario = $_POST['scenario'];
+      $macdest1 = $_POST['macdest1'];
+      $macdexp1 = $_POST['macdexp1'];
+      $type1 = $_POST['type1'];
+      $data1 = $_POST['data1'];
+      $FCS1 = $_POST['FCS1'];
+      $FCS2 = $_POST['FCS2'];
+      $macdest2 = $_POST['macdest2'];
+      $macdexp2 = $_POST['macdexp2'];
+      $type2 = $_POST['type2'];
+      $data2 = $_POST['data2'];
+      $T1 = $_POST['T1'];
+      $T2 = $_POST['T2'];
+      $T3 = $_POST['T3'];
+      $T1M1 = $_POST['T1M1'];
+      $T1M2 = $_POST['T1M2'];
+      $T2M1 = $_POST['T2M1'];
+      $T2M2 = $_POST['T2M2'];
+      $T3M1 = $_POST['T3M1'];
+      $T3M2 = $_POST['T3M2'];
+      $T1temps = $_POST['T1temps'];
+      $T2temps = $_POST['T2temps'];
+      $T3temps = $_POST['T3temps'];
+      if($bdd->query("INSERT INTO ethernet (scenario,macdest1, macdexp1, type1, data1, FCS1, FCS2, macdest2, macdexp2, type2, data2, T1, T2, T3 ,T1M1, T1M2, T2M1, T2M2, T3M1, T3M2, T1temps, T2temps,T3temps) VALUES('$scenario','$macdest1','$macdexp1','$type1','$data1','$FCS1','$FCS2','$macdest2','$macdexp2','$type2','$data2','$T1','$T2','$T3','$T1M1','$T1M2','$T2M1','$T2M2','$T3M1','$T3M2','$T1temps','$T2temps','$T3temps')")== TRUE) {
+        echo "<h2> Le scénario à bien été crée ! </h2>";
+      }
+    }
+  }
 
+  ?>
   <h1> Ajouter un scénario </h1>
   <form action="index.php" method="post">
     <table class="container">
       <tr>
-        <td>Scénario :</td>
+        <td>Enoncé du scénario :</td>
         <td><textarea id=scenario class="text" cols="50" rows="10" name=scenario required></textarea></td>
       </tr>
     </table>
@@ -140,18 +175,53 @@
         <tr>
           <td>Trame n°1</td>
           <td><input type="text" name="macdest1" required /></td>
-          <td><input type="text" name="macexp1" required /></td>
+          <td><input type="text" name="macdexp1" required /></td>
           <td><input type="text" name="type1" required /></td>
           <td><input type="text" name="data1" required /></td>
-          <td><input type="text" name="fcs1" required /></td>
+          <td><input type="text" name="FCS1" required /></td>
         </tr>
         <tr>
           <td>Trame n°2</td>
           <td><input type="text" name="macdest2" required /></td>
-          <td><input type="text" name="macexp2" required /></td>
+          <td><input type="text" name="macdexp2" required /></td>
           <td><input type="text" name="type2" required /></td>
           <td><input type="text" name="data2" required /></td>
-          <td><input type="text" name="fcs2" required /></td>
+          <td><input type="text" name="FCS2" required /></td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="container" border="2">
+      <thead>
+        <h1>Remplissez la correction pour les chronogrammes : </h1>
+        <tr>
+          <th></th>
+          <th>Trame envoyée</th>
+          <th>Machine envoyant la trame</th>
+          <th>Machine recevant la trame</th>
+          <th>Temps (en µs) du tranfert de données de la trame</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Trame n°1</td>
+          <td><input type="text" name="T1" required /></td>
+          <td><input type="text" name="T1M1" required /></td>
+          <td><input type="text" name="T1M2" required /></td>
+          <td><input type="text" name="T1temps" required /></td>
+        </tr>
+        <tr>
+          <td>Trame n°2</td>
+          <td><input type="text" name="T2" required /></td>
+          <td><input type="text" name="T2M1" required /></td>
+          <td><input type="text" name="T2M2" required /></td>
+          <td><input type="text" name="T2temps" required /></td>
+        </tr>
+        <tr>
+          <td>Trame n°3</td>
+          <td><input type="text" name="T3" required /></td>
+          <td><input type="text" name="T3M1" required /></td>
+          <td><input type="text" name="T3M2" required /></td>
+          <td><input type="text" name="T3temps" required /></td>
         </tr>
       </tbody>
     </table>
@@ -166,14 +236,6 @@
   $nbScenario = $bdd->query("SELECT COUNT(*) as nombre FROM ethernet");
   $requete = $nbScenario->fetch();
   $nombreScenarios = $requete["nombre"];
-
-  if (isset($_POST)) {
-    if (isset($_POST["supprimerScenar"])) {
-      $ScenarioDelete = $_POST["supprimerScenar"];
-      $delete = $bdd->query("DELETE FROM ethernet WHERE id_scenario = $ScenarioDelete");
-    }
-  }
-
 
   echo "------------------------------";
   for ($i = 1; $i <= $nombreScenarios; $i++) {
