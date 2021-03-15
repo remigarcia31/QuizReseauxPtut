@@ -50,4 +50,9 @@ class EthernetController
         return $view;
     }
 
+    public function verif($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/verif");
+        return $view;
+    }
+
 }

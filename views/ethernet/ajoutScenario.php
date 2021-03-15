@@ -102,13 +102,18 @@
   <h1> Quiz Ethernet : Ajout de scénario </h1>
   
   <?php
+    $nbScenario = $bdd->query("SELECT COUNT(*) as nombre FROM ethernet"); //on récupère le total des requetes pour pouvoir les afficher plus tard
+    $requete = $nbScenario->fetch();
+    $nombreScenarios = $requete["nombre"];
+    $idScenarioAAjouter = ++$nombreScenarios;
+
   if (isset($_POST)) {
     if (isset($_POST["supprimerScenar"])) { //Si l'utilisateur à cliqué sur un des boutons pour supprimer le scénario
       $ScenarioDelete = $_POST["supprimerScenar"];
       $delete = $bdd->query("DELETE FROM ethernet WHERE id_scenario = $ScenarioDelete");
       echo "<h2 class='correct'> Le scénario à bien été supprimé ! </h2>";
     } else if (isset($_POST["scenario"])) { //si l'utilisateur à cliqué sur le bouton pour ajouter un scénario
-      $scenario = $_POST['scenario'];
+      $scenario = $_POST['scenario']; //transformations des $_POST en variables pour les inserer dans la base de données
       $macdest1 = $_POST['macdest1'];
       $macdexp1 = $_POST['macdexp1'];
       $type1 = $_POST['type1'];
@@ -131,7 +136,8 @@
       $T1temps = $_POST['T1temps'];
       $T2temps = $_POST['T2temps'];
       $T3temps = $_POST['T3temps'];
-      if($bdd->query("INSERT INTO ethernet (scenario,macdest1, macdexp1, type1, data1, FCS1, FCS2, macdest2, macdexp2, type2, data2, T1, T2, T3 ,T1M1, T1M2, T2M1, T2M2, T3M1, T3M2, T1temps, T2temps,T3temps) VALUES('$scenario','$macdest1','$macdexp1','$type1','$data1','$FCS1','$FCS2','$macdest2','$macdexp2','$type2','$data2','$T1','$T2','$T3','$T1M1','$T1M2','$T2M1','$T2M2','$T3M1','$T3M2','$T1temps','$T2temps','$T3temps')")== TRUE) {
+      //On insère toutes les données fournie par l'utilisateur pour les stocker dans la bdd avec un INSERT INTO
+      if($bdd->query("INSERT INTO ethernet (id_scenario,scenario,macdest1, macdexp1, type1, data1, FCS1, FCS2, macdest2, macdexp2, type2, data2, T1, T2, T3 ,T1M1, T1M2, T2M1, T2M2, T3M1, T3M2, T1temps, T2temps,T3temps) VALUES('$idScenarioAAjouter','$scenario','$macdest1','$macdexp1','$type1','$data1','$FCS1','$FCS2','$macdest2','$macdexp2','$type2','$data2','$T1','$T2','$T3','$T1M1','$T1M2','$T2M1','$T2M2','$T3M1','$T3M2','$T1temps','$T2temps','$T3temps')")== TRUE) {
         echo "<h2 class='correct'> Le scénario à bien été crée ! </h2>";
       }
     }
@@ -234,10 +240,6 @@
 
   <h1> Affichage des scénarios existants</h1>
   <?php
-  $nbScenario = $bdd->query("SELECT COUNT(*) as nombre FROM ethernet");
-  $requete = $nbScenario->fetch();
-  $nombreScenarios = $requete["nombre"];
-
   echo "------------------------------";
   for ($i = 1; $i <= $nombreScenarios; $i++) {
     $maRequete = $bdd->query("SELECT * FROM ethernet WHERE id_scenario = $i");
