@@ -148,3 +148,25 @@ textarea
 {
     color:black;
 }
+
+.enonceScenario
+{
+    width : 100%;
+    table-layout: auto;
+    width: 75%;
+    border-collapse: collapse; 
+}
+
+.ajoutScenario
+{
+    table-layout: auto;
+    width: 60%;
+    border-collapse:collapse;
+}
+
+.bordureForm
+{
+    border: solid;
+    border-color: wheat;
+}
+
