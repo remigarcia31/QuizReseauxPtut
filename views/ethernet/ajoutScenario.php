@@ -106,6 +106,7 @@
     if (isset($_POST["supprimerScenar"])) { //Si l'utilisateur à cliqué sur un des boutons pour supprimer le scénario
       $ScenarioDelete = $_POST["supprimerScenar"];
       $delete = $bdd->query("DELETE FROM ethernet WHERE id_scenario = $ScenarioDelete");
+      echo "<h2 class='correct'> Le scénario à bien été supprimé ! </h2>";
     } else if (isset($_POST["scenario"])) { //si l'utilisateur à cliqué sur le bouton pour ajouter un scénario
       $scenario = $_POST['scenario'];
       $macdest1 = $_POST['macdest1'];
@@ -131,21 +132,21 @@
       $T2temps = $_POST['T2temps'];
       $T3temps = $_POST['T3temps'];
       if($bdd->query("INSERT INTO ethernet (scenario,macdest1, macdexp1, type1, data1, FCS1, FCS2, macdest2, macdexp2, type2, data2, T1, T2, T3 ,T1M1, T1M2, T2M1, T2M2, T3M1, T3M2, T1temps, T2temps,T3temps) VALUES('$scenario','$macdest1','$macdexp1','$type1','$data1','$FCS1','$FCS2','$macdest2','$macdexp2','$type2','$data2','$T1','$T2','$T3','$T1M1','$T1M2','$T2M1','$T2M2','$T3M1','$T3M2','$T1temps','$T2temps','$T3temps')")== TRUE) {
-        echo "<h2> Le scénario à bien été crée ! </h2>";
+        echo "<h2 class='correct'> Le scénario à bien été crée ! </h2>";
       }
     }
   }
 
   ?>
   <h1> Ajouter un scénario </h1>
-  <form action="index.php" method="post">
-    <table class="container">
+  <form action="index.php" method="post" class="container bordureForm">
+    <table class="container enonceScenario">
       <tr>
-        <td>Enoncé du scénario :</td>
+        <td><h2>Enoncé du scénario :</h2></td>
         <td><textarea id=scenario class="text" cols="50" rows="10" name=scenario required></textarea></td>
       </tr>
     </table>
-    <table class="container" border="2">
+    <table class="container ajoutScenario">
       <thead>
         <tr>
           <th>
@@ -190,7 +191,7 @@
         </tr>
       </tbody>
     </table>
-    <table class="container" border="2">
+    <table class="container ajoutScenario">
       <thead>
         <h1>Remplissez la correction pour les chronogrammes : </h1>
         <tr>
@@ -198,7 +199,7 @@
           <th>Trame envoyée</th>
           <th>Machine envoyant la trame</th>
           <th>Machine recevant la trame</th>
-          <th>Temps (en µs) du tranfert de données de la trame</th>
+          <th>Temps (en µs) du transfert de données de la trame</th>
         </tr>
       </thead>
       <tbody>
