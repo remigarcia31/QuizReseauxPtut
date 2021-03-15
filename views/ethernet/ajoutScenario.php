@@ -100,12 +100,12 @@
   </header>
 
   <h1> Quiz Ethernet : Ajout de scénario </h1>
-  
+
   <?php
-    $nbScenario = $bdd->query("SELECT COUNT(*) as nombre FROM ethernet"); //on récupère le total des requetes pour pouvoir les afficher plus tard
-    $requete = $nbScenario->fetch();
-    $nombreScenarios = $requete["nombre"];
-    $idScenarioAAjouter = ++$nombreScenarios;
+  $nbScenario = $bdd->query("SELECT COUNT(*) as nombre FROM ethernet"); //on récupère le total des requetes pour pouvoir les afficher plus tard
+  $requete = $nbScenario->fetch();
+  $nombreScenarios = $requete["nombre"];
+  $idScenarioAAjouter = ++$nombreScenarios;
 
   if (isset($_POST)) {
     if (isset($_POST["supprimerScenar"])) { //Si l'utilisateur à cliqué sur un des boutons pour supprimer le scénario
@@ -137,7 +137,7 @@
       $T2temps = $_POST['T2temps'];
       $T3temps = $_POST['T3temps'];
       //On insère toutes les données fournie par l'utilisateur pour les stocker dans la bdd avec un INSERT INTO
-      if($bdd->query("INSERT INTO ethernet (id_scenario,scenario,macdest1, macdexp1, type1, data1, FCS1, FCS2, macdest2, macdexp2, type2, data2, T1, T2, T3 ,T1M1, T1M2, T2M1, T2M2, T3M1, T3M2, T1temps, T2temps,T3temps) VALUES('$idScenarioAAjouter','$scenario','$macdest1','$macdexp1','$type1','$data1','$FCS1','$FCS2','$macdest2','$macdexp2','$type2','$data2','$T1','$T2','$T3','$T1M1','$T1M2','$T2M1','$T2M2','$T3M1','$T3M2','$T1temps','$T2temps','$T3temps')")== TRUE) {
+      if ($bdd->query("INSERT INTO ethernet (id_scenario,scenario,macdest1, macdexp1, type1, data1, FCS1, FCS2, macdest2, macdexp2, type2, data2, T1, T2, T3 ,T1M1, T1M2, T2M1, T2M2, T3M1, T3M2, T1temps, T2temps,T3temps) VALUES('$idScenarioAAjouter','$scenario','$macdest1','$macdexp1','$type1','$data1','$FCS1','$FCS2','$macdest2','$macdexp2','$type2','$data2','$T1','$T2','$T3','$T1M1','$T1M2','$T2M1','$T2M2','$T3M1','$T3M2','$T1temps','$T2temps','$T3temps')") == TRUE) {
         echo "<h2 class='correct'> Le scénario à bien été crée ! </h2>";
       }
     }
@@ -148,7 +148,9 @@
   <form action="index.php" method="post" class="container bordureForm">
     <table class="container enonceScenario">
       <tr>
-        <td><h2>Enoncé du scénario :</h2></td>
+        <td>
+          <h2>Enoncé du scénario :</h2>
+        </td>
         <td><textarea id=scenario class="text" cols="50" rows="10" name=scenario required></textarea></td>
       </tr>
     </table>
@@ -247,14 +249,16 @@
     if ($affichageScenario["scenario"] != "") {
       echo "<h2> Scénario n°$i</h2>";
       echo $affichageScenario['scenario'];
+      if ($i > 3) {
   ?>
-      <form action="index.php" method="post">
-        <input hidden name="action" value="ajoutScenario">
-        <input hidden name="controller" value="ethernet">
-        <input hidden name="supprimerScenar" value="<?php echo "$i"; ?>">
-        <input type="submit" value="Supprimer scénario">
-      </form>
+        <form action="index.php" method="post">
+          <input hidden name="action" value="ajoutScenario">
+          <input hidden name="controller" value="ethernet">
+          <input hidden name="supprimerScenar" value="<?php echo "$i"; ?>">
+          <input type="submit" value="Supprimer scénario">
+        </form>
   <?php
+      }
       echo "------------------------------";
     }
   }
