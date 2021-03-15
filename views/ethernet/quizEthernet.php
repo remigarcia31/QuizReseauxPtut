@@ -169,7 +169,7 @@ use yasmf\HttpHelper;
         ?>
         <!-- completer et rajouter l'affichage d'un chronogramme à résoudre -->
         <form action="index.php" method="post">
-            <input hidden name="action" value="correctionChronogramme">
+            <input hidden name="action" value="correctionChronogrammePartage">
             <input hidden name="controller" value="Ethernet">
             <table class="container">
                 <thead>
@@ -285,7 +285,7 @@ use yasmf\HttpHelper;
         ?>
         <!-- completer et rajouter l'affichage d'un chronogramme à résoudre -->
         <form action="index.php" method="post">
-            <input hidden name="action" value="correction">
+            <input hidden name="action" value="correctionChronogrammeCommute">
             <input hidden name="controller" value="ethernet">
             <table class="container">
                 <thead>
@@ -293,36 +293,40 @@ use yasmf\HttpHelper;
                     <th><h3></h3></th>
                     <th>
                         <h3>
-                            <select class="machine">
-                                <option value="volvo">M1</option>
-                                <option value="saab">M2</option>
-                                <option value="opel">M3</option>
-                                <option value="audi">M4</option>
+                            <select class="machine" name="T1M1">
+                                <option value=""></option>
+                                <option value="M1">M1</option>
+                                <option value="M2">M2</option>
+                                <option value="M3">M3</option>
+                                <option value="M4">M4</option>
                             </select>
                             <img src="images/petitefleche.png" height="30px" width="50px">
-                            <select class="machine">
-                                <option value="volvo">M1</option>
-                                <option value="saab">M2</option>
-                                <option value="opel">M3</option>
-                                <option value="audi">M4</option>
+                            <select class="machine" name="T1M2">
+                                <option value=""></option>
+                                <option value="M1">M1</option>
+                                <option value="M2">M2</option>
+                                <option value="M3">M3</option>
+                                <option value="M4">M4</option>
                             </select>
                         </h3>
                     </th>
                     <th><h3></h3></th>
                     <th>
                         <h3>
-                            <select class="machine">
-                                <option value="volvo">M1</option>
-                                <option value="saab">M2</option>
-                                <option value="opel">M3</option>
-                                <option value="audi">M4</option>
+                            <select class="machine" name="T2M1">
+                                <option value=""></option>
+                                <option value="M1">M1</option>
+                                <option value="M2">M2</option>
+                                <option value="M3">M3</option>
+                                <option value="M4">M4</option>
                             </select>
                             <img src="images/petitefleche.png" height="30px" width="50px">
-                            <select class="machine">
-                                <option value="volvo">M1</option>
-                                <option value="saab">M2</option>
-                                <option value="opel">M3</option>
-                                <option value="audi">M4</option>
+                            <select class="machine" name="T2M2">
+                                <option value=""></option>
+                                <option value="M1">M1</option>
+                                <option value="M2">M2</option>
+                                <option value="M3">M3</option>
+                                <option value="M4">M4</option>
                             </select>
                         </h3>
                     </th>
@@ -330,16 +334,18 @@ use yasmf\HttpHelper;
                 </tr>
                 <tr>
                     <td></td>
-                    <td><select class="machine">
-                            <option value="volvo">T1</option>
-                            <option value="saab">T2</option>
-                            <option value="opel">T3</option>
+                    <td><select class="machine" name="T1">
+                            <option value=""></option>
+                            <option value="T1">T1</option>
+                            <option value="T2">T2</option>
+                            <option value="T3">T3</option>
                         </select></td>
                     <td></td>
-                    <td><select class="machine">
-                            <option value="volvo">T1</option>
-                            <option value="saab">T2</option>
-                            <option value="opel">T3</option>
+                    <td><select class="machine" name="T2">
+                            <option value=""></option>
+                            <option value="T1">T1</option>
+                            <option value="T2">T2</option>
+                            <option value="T3">T3</option>
                         </select></td>
                     <td></td>
                 </tr>
@@ -367,18 +373,20 @@ use yasmf\HttpHelper;
                     <th><h3></h3></th>
                     <th>
                         <h3>
-                            <select class="machine">
-                                <option value="volvo">M1</option>
-                                <option value="saab">M2</option>
-                                <option value="opel">M3</option>
-                                <option value="audi">M4</option>
+                            <select class="machine" name="T3M1">
+                                <option value=""></option>
+                                <option value="M1">M1</option>
+                                <option value="M2">M2</option>
+                                <option value="M3">M3</option>
+                                <option value="M4">M4</option>
                             </select>
                             <img src="images/petitefleche.png" height="30px" width="50px">
-                            <select class="machine">
-                                <option value="volvo">M1</option>
-                                <option value="saab">M2</option>
-                                <option value="opel">M3</option>
-                                <option value="audi">M4</option>
+                            <select class="machine" name="T3M2">
+                                <option value=""></option>
+                                <option value="M1">M1</option>
+                                <option value="M2">M2</option>
+                                <option value="M3">M3</option>
+                                <option value="M4">M4</option>
                             </select>
                         </h3>
                     </th>
@@ -386,10 +394,11 @@ use yasmf\HttpHelper;
                 </tr>
                 <tr>
                     <td></td>
-                    <td><select class="machine">
-                            <option value="volvo">T1</option>
-                            <option value="saab">T2</option>
-                            <option value="opel">T3</option>
+                    <td><select class="machine" name="T3">
+                            <option value=""></option>
+                            <option value="T1">T1</option>
+                            <option value="T2">T2</option>
+                            <option value="T3">T3</option>
                         </select></td>
                 </tr>
                 </thead>
