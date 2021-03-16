@@ -50,6 +50,7 @@ use yasmf\HttpHelper;
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li>
+                        <!-- Bouton pour aller à l'accueil -->
                         <form action="index.php" method="post">
                             <input hidden name="action" value="">
                             <input hidden name="controller" value="">
@@ -57,6 +58,7 @@ use yasmf\HttpHelper;
                         </form>
                     </li>
                     <li>
+                        <!-- Bouton pour aller à la page IP -->
                         <form action="index.php" method="post">
                             <input hidden name="action" value="choixCIDR">
                             <input hidden name="controller" value="Ip">
@@ -64,13 +66,7 @@ use yasmf\HttpHelper;
                         </form>
                     </li>
                     <li>
-                        <form action="index.php" method="post">
-                            <input hidden name="action" value="wifi">
-                            <input hidden name="controller" value="Wifi">
-                            <input type="submit" value="Wifi">
-                        </form>
-                    </li>
-                    <li>
+                        <!-- Bouton pour aller à la page Ethernet -->
                         <form action="index.php" method="post">
                             <input hidden name="action" value="ethernet">
                             <input hidden name="controller" value="Ethernet">
@@ -78,6 +74,7 @@ use yasmf\HttpHelper;
                         </form>
                     </li>
                     <li>
+                        <!-- Bouton pour aller à la page contact -->
                         <form action="index.php" method="post">
                             <input hidden name="action" value="contact">
                             <input hidden name="controller" value="">
@@ -180,7 +177,7 @@ use yasmf\HttpHelper;
         </THEAD>
     </table>
     </form>
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     <br/>
     <br/>
     <h2>Votre réponse </h2>
@@ -327,7 +324,7 @@ use yasmf\HttpHelper;
     </table>
 
     <?php
-    $note = ($note*10)/12; // on ramène la note sur 10
+    $note = ($note * 10) / 12; // on ramène la note sur 10
     echo "<h2> Vous avez eu $note/10 </h2>";
     ?>
     <br/>

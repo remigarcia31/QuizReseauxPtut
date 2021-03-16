@@ -51,6 +51,7 @@ use yasmf\HttpHelper;
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li>
+                        <!-- Bouton pour aller à l'accueil -->
                         <form action="index.php" method="post">
                             <input hidden name="action" value="">
                             <input hidden name="controller" value="">
@@ -58,6 +59,7 @@ use yasmf\HttpHelper;
                         </form>
                     </li>
                     <li>
+                        <!-- Bouton pour aller à la page IP -->
                         <form action="index.php" method="post">
                             <input hidden name="action" value="choixCIDR">
                             <input hidden name="controller" value="Ip">
@@ -65,13 +67,7 @@ use yasmf\HttpHelper;
                         </form>
                     </li>
                     <li>
-                        <form action="index.php" method="post">
-                            <input hidden name="action" value="wifi">
-                            <input hidden name="controller" value="Wifi">
-                            <input type="submit" value="Wifi">
-                        </form>
-                    </li>
-                    <li>
+                        <!-- Bouton pour aller à la page Ethernet -->
                         <form action="index.php" method="post">
                             <input hidden name="action" value="ethernet">
                             <input hidden name="controller" value="Ethernet">
@@ -79,6 +75,7 @@ use yasmf\HttpHelper;
                         </form>
                     </li>
                     <li>
+                        <!-- Bouton pour aller à la page contact -->
                         <form action="index.php" method="post">
                             <input hidden name="action" value="contact">
                             <input hidden name="controller" value="">
@@ -86,11 +83,6 @@ use yasmf\HttpHelper;
                         </form>
                     </li>
                 </ul>
-                <!-- CONNEXION / INSCRIPTION A METTRE EN PLACE A LA FIN
-                      <ul class="nav navbar-nav navbar-right">
-                        <li><a href="pages/inscription.php"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
-                        <li><a href="pages/connexion.php"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
-                      </ul>-->
             </div>
         </div>
     </nav>
@@ -364,7 +356,6 @@ use yasmf\HttpHelper;
                     <td></td>
                 </tr>
                 </tbody>
-
             </table>
 
             <table class="container">
