@@ -32,11 +32,11 @@
 
 <body>
 <?php
-$bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
 
 spl_autoload_extensions(".php");
 spl_autoload_register();
 
+use yasmf\DataSource;
 use yasmf\HttpHelper;
 
 ?>
@@ -138,6 +138,7 @@ if (isset($_POST)) {
 ?>
 <h1> Ajouter un scénario </h1>
 <form action="index.php" method="post" class="container bordureForm">
+ <!-- affichage du formulaire à remplir pour ajouter un scénario-->
     <table class="container enonceScenario">
         <tr>
             <td>
@@ -234,12 +235,15 @@ if (isset($_POST)) {
 
 <h1> Affichage des scénarios existants</h1>
 <?php
+//Boucle for pour afficher tous les scénarios existants dans la base de données
 echo "------------------------------";
 for ($i = 1; $i <= $nombreScenarios; $i++) {
     $maRequete = $bdd->query("SELECT * FROM ethernet WHERE id_scenario = $i");
     $affichageScenario = $maRequete->fetch();
     if ($affichageScenario["scenario"] != "") {
         echo "<h2> Scénario n°$i</h2>";
+        // restriction concernant la suppression des scénario
+        //impossible de supprimer les trois premiers scénarios pour permettre au site son bon déroulement
         echo $affichageScenario['scenario'];
         if ($i > 3) {
             ?>
