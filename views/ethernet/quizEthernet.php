@@ -464,6 +464,7 @@
                     <form action="index.php" method="post">
                         <input name="action" value="correctionChronogrammeCommute" hidden>
                         <input name="controller" value="Ethernet" hidden>
+                        <input name="noChrono" hidden>
                         <input name="num_scenario" value="<?php echo $num_scenario; ?>" hidden>
                         <input type="submit" value="Voir la correction">
                     </form>
