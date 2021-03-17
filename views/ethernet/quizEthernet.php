@@ -195,7 +195,7 @@ use yasmf\HttpHelper;
                         </th>
                         <th>
                             <h3>
-                                <select class="machine" name="T1M1">
+                                <select class="machine" name="T1M1" required>
                                     <option value=""></option>
                                     <option value="M1">M1</option>
                                     <option value="M2">M2</option>
@@ -203,7 +203,7 @@ use yasmf\HttpHelper;
                                     <option value="M4">M4</option>
                                 </select>
                                 <img src="images/petitefleche.png" height="30px" width="50px">
-                                <select class="machine" name="T1M2">
+                                <select class="machine" name="T1M2" required>
                                     <option value=""></option>
                                     <option value="M1">M1</option>
                                     <option value="M2">M2</option>
@@ -213,11 +213,11 @@ use yasmf\HttpHelper;
                             </h3>
                         </th>
                         <th>
-                            <h3></h3>
+                            <h3>Temps IT</h3>
                         </th>
                         <th>
                             <h3>
-                                <select class="machine" name="T2M1">
+                                <select class="machine" name="T2M1" required>
                                     <option value=""></option>
                                     <option value="M1">M1</option>
                                     <option value="M2">M2</option>
@@ -225,7 +225,7 @@ use yasmf\HttpHelper;
                                     <option value="M4">M4</option>
                                 </select>
                                 <img src="images/petitefleche.png" height="30px" width="50px">
-                                <select class="machine" name="T2M2">
+                                <select class="machine" name="T2M2" required>
                                     <option value=""></option>
                                     <option value="M1">M1</option>
                                     <option value="M2">M2</option>
@@ -235,11 +235,11 @@ use yasmf\HttpHelper;
                             </h3>
                         </th>
                         <th>
-                            <h3></h3>
+                            <h3>Temps IT</h3>
                         </th>
                         <th>
                             <h3>
-                                <select class="machine" name="T3M1">
+                                <select class="machine" name="T3M1" required>
                                     <option value=""></option>
                                     <option value="M1">M1</option>
                                     <option value="M2">M2</option>
@@ -247,7 +247,7 @@ use yasmf\HttpHelper;
                                     <option value="M4">M4</option>
                                 </select>
                                 <img src="images/petitefleche.png" height="30px" width="50px">
-                                <select class="machine" name="T3M2">
+                                <select class="machine" name="T3M2" required>
                                     <option value=""></option>
                                     <option value="M1">M1</option>
                                     <option value="M2">M2</option>
@@ -259,21 +259,21 @@ use yasmf\HttpHelper;
                     </tr>
                     <tr>
                         <td></td>
-                        <td><select class="machine" name="T1">
+                        <td><select class="machine" name="T1" required>
                                 <option value=""></option>
                                 <option value="T1">T1</option>
                                 <option value="T2">T2</option>
                                 <option value="T3">T3</option>
                             </select></td>
                         <td></td>
-                        <td><select class="machine" name="T2">
+                        <td><select class="machine" name="T2" required>
                                 <option value=""></option>
                                 <option value="T1">T1</option>
                                 <option value="T2">T2</option>
                                 <option value="T3">T3</option>
                             </select></td>
                         <td></td>
-                        <td><select class="machine" name="T3">
+                        <td><select class="machine" name="T3" required>
                                 <option value=""></option>
                                 <option value="T1">T1</option>
                                 <option value="T2">T2</option>
@@ -291,9 +291,9 @@ use yasmf\HttpHelper;
                     <tr>
                         <td></td>
                         <td><input type="text" name="t1temps" required/>μs</td>
-                        <td></td>
+                        <td><input class="zoneit" name="ittemps1" required/>μs</td>
                         <td><input type="text" name="t2temps" required/>μs</td>
-                        <td></td>
+                        <td><input class="zoneit" name="ittemps2" required/>μs</td>
                         <td><input type="text" name="t3temps" required/>μs</td>
                     </tr>
                     </tbody>
@@ -324,7 +324,7 @@ use yasmf\HttpHelper;
                                 </th>
                                 <th>
                                     <h3>
-                                        <select class="machine" name="T1M1">
+                                        <select class="machine" name="T1M1" required>
                                             <option value=""></option>
                                             <option value="M1">M1</option>
                                             <option value="M2">M2</option>
@@ -332,7 +332,7 @@ use yasmf\HttpHelper;
                                             <option value="M4">M4</option>
                                         </select>
                                         <img src="images/petitefleche.png" height="30px" width="50px">
-                                        <select class="machine" name="T1M2">
+                                        <select class="machine" name="T1M2" required>
                                             <option value=""></option>
                                             <option value="M1">M1</option>
                                             <option value="M2">M2</option>
@@ -342,11 +342,11 @@ use yasmf\HttpHelper;
                                     </h3>
                                 </th>
                                 <th>
-                                    <h3></h3>
+                                    <h3>Temps IT</h3>
                                 </th>
                                 <th>
                                     <h3>
-                                        <select class="machine" name="T2M1">
+                                        <select class="machine" name="T2M1" required>
                                             <option value=""></option>
                                             <option value="M1">M1</option>
                                             <option value="M2">M2</option>
@@ -354,7 +354,7 @@ use yasmf\HttpHelper;
                                             <option value="M4">M4</option>
                                         </select>
                                         <img src="images/petitefleche.png" height="30px" width="50px">
-                                        <select class="machine" name="T2M2">
+                                        <select class="machine" name="T2M2" required>
                                             <option value=""></option>
                                             <option value="M1">M1</option>
                                             <option value="M2">M2</option>
@@ -369,14 +369,14 @@ use yasmf\HttpHelper;
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><select class="machine" name="T1">
+                                <td><select class="machine" name="T1" required>
                                         <option value=""></option>
                                         <option value="T1">T1</option>
                                         <option value="T2">T2</option>
                                         <option value="T3">T3</option>
                                     </select></td>
                                 <td></td>
-                                <td><select class="machine" name="T2">
+                                <td><select class="machine" name="T2" required>
                                         <option value=""></option>
                                         <option value="T1">T1</option>
                                         <option value="T2">T2</option>
@@ -393,12 +393,13 @@ use yasmf\HttpHelper;
                         <table class="container">
                             <tr>
                                 <td></td>
-                                <td><input type="text" name="macdest1" required/>μs</td>
-                                <td></td>
-                                <td><input type="text" name="type1" required/>μs</td>
+                                <td><input type="text" name="t1temps" required/>μs</td>
+                                <td><input class="zoneit" name="ittemps1" required/>μs</td>
+                                <td><input type="text" name="t2temps" required/>μs</td>
                                 <td></td>
                             </tr>
                             </tbody>
+
                         </table>
 
                         <table class="container">
@@ -409,7 +410,7 @@ use yasmf\HttpHelper;
                                 </th>
                                 <th>
                                     <h3>
-                                        <select class="machine" name="T3M1">
+                                        <select class="machine" name="T3M1" required>
                                             <option value=""></option>
                                             <option value="M1">M1</option>
                                             <option value="M2">M2</option>
@@ -417,7 +418,7 @@ use yasmf\HttpHelper;
                                             <option value="M4">M4</option>
                                         </select>
                                         <img src="images/petitefleche.png" height="30px" width="50px">
-                                        <select class="machine" name="T3M2">
+                                        <select class="machine" name="T3M2" required>
                                             <option value=""></option>
                                             <option value="M1">M1</option>
                                             <option value="M2">M2</option>
@@ -432,7 +433,7 @@ use yasmf\HttpHelper;
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><select class="machine" name="T3">
+                                <td><select class="machine" name="T3" required>
                                         <option value=""></option>
                                         <option value="T1">T1</option>
                                         <option value="T2">T2</option>
@@ -447,11 +448,10 @@ use yasmf\HttpHelper;
                         <table class="container">
                             <tr>
                                 <td></td>
-                                <td><input type="text" name="macdest1" required/>μs</td>
+                                <td><input type="text" name="t3temps" required/>μs</td>
                                 <td></td>
                             </tr>
                             </tbody>
-
                         </table>
 
                         <input name="num_scenario" value="<?php echo $num_scenario; ?>" hidden>
