@@ -61,7 +61,6 @@ h1 {
     font-weight: 500;
 }
 
-
 input[type=submit] {
     padding: 12px 20px;
     margin: 8px 0;
@@ -83,7 +82,14 @@ input[type=text] {
 }
 
 input[type=password] {
-    color:black;
+    color: black;
+}
+
+/* pour l'input du temps de IT */
+.zoneit {
+    width: 75px;
+    height: 25px;
+    color: black;
 }
 
 .container th h1 {
@@ -143,23 +149,20 @@ textarea {
     color: black;
 }
 
-.enonceScenario
-{
-    width : 100%;
+.enonceScenario {
+    width: 100%;
     table-layout: auto;
     width: 75%;
-    border-collapse: collapse; 
+    border-collapse: collapse;
 }
 
-.ajoutScenario
-{
+.ajoutScenario {
     table-layout: auto;
     width: 60%;
-    border-collapse:collapse;
+    border-collapse: collapse;
 }
 
-.bordureForm
-{
+.bordureForm {
     border: solid;
     border-color: wheat;
 }
