@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Raleway', sans-serif !important;
+    color: white !important;
+    text-align: center !important;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: rgb(0, 71, 96);
+    background: radial-gradient(circle, #555555 0%, rgba(3, 22, 54, 1) 100%);
+}
+
+footer {
+    background-color: #031636 !important;
+    position: absolute !important;
+    bottom: 0% !important;
+    width: 100% !important;
+    padding-top: 50px !important;
+    z-index: 1;
+
+}
+
+.center {
+    position: absolute !important;
+    bottom: 40% !important;
+    width: 100% !important;
+    padding-top: 50px !important;
+    color: black;
+    z-index: 1;
+
+}
+
+
+.img_fond {
+    background-image: url("../images/imagedefond.png") !important;
+    background-repeat: repeat !important;
+    width: 100%;
+
+}
+
+.img_iut {
+    border-radius: 5px !important;
+    width: 175px !important;
+    margin-bottom: 35px;
+}
+
+.navbar-darkblue {
+    background-color: #031636 !important;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-weight: 500;
+}
+
+input[type=submit] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    transition-duration: 0.4s;
+    margin: 5px;
+    background-color: #031636;
+    color: white;
+    border: 2px solid #031636;
+}
+
+input[type=submit]:hover {
+    background-color: #555555;
+    color: white;
+}
+
+input[type=text] {
+    color: black;
+}
+
+input[type=password] {
+    color: black;
+}
+
+/* pour l'input du temps de IT */
+.zoneit {
+    width: 75px;
+    height: 25px;
+    color: black;
+}
+
+.container th h1 {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    color: white;
+}
+
+.container th {
+    font-size: 2em;
+
+}
+
+.container td {
+    font-weight: normal;
+    font-size: 1em;
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+    overflow: hidden;
+    width: 85%;
+    margin: 0 auto;
+    display: table;
+    padding: 0 0 8em 0;
+}
+
+.container td, .container th {
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left: 2%;
+    text-align: center;
+}
+
+.machine {
+    color: black;
+}
+
+
+.enonce {
+    color: beige;
+    text-align: center;
+    font-weight: bold;
+}
+
+.faux {
+    color: red;
+}
+
+.correct {
+    color: green;
+}
+
+textarea {
+    color: black;
+}
+
+.enonceScenario {
+    width: 100%;
+    table-layout: auto;
+    width: 75%;
+    border-collapse: collapse;
+}
+
+.ajoutScenario {
+    table-layout: auto;
+    width: 60%;
+    border-collapse: collapse;
+}
+
+.bordureForm {
+    border: solid;
+    border-color: wheat;
+}
+

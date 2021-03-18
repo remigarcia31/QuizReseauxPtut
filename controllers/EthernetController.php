@@ -26,7 +26,38 @@ use yasmf\View;
 class EthernetController
 {
     public function ethernet($pdo) {
-        $view = new View("QuizReseauxPtut/views/ethernet");
+        $view = new View("QuizReseauxPtut/views/ethernet/ethernet");
         return $view;
     }
+
+    public function quizEthernet($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/quizEthernet");
+        return $view;
+    }
+
+    public function correction($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/correctionEthernet");
+        return $view;
+    }
+
+    public function correctionChronogrammePartage($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/correctionEthernetChronogrammePartage");
+        return $view;
+    }
+
+    public function correctionChronogrammeCommute($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/correctionEthernetChronogrammeCommute");
+        return $view;
+    }
+
+    public function ajoutScenario($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/ajoutScenario");
+        return $view;
+    }
+
+    public function verif($pdo) {
+        $view = new View("QuizReseauxPtut/views/ethernet/verif");
+        return $view;
+    }
+
 }

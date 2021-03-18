@@ -25,12 +25,6 @@ use yasmf\View;
 
 class IpController
 {
-    public function sayHello($pdo) {
-        $name = HttpHelper::getParam('name') ?: 'no name' ;
-        $view = new View("QuizReseauxPtut/views/hello_you");
-        $view->setVar('name',$name);
-        return $view;
-    }
 
     public function choixCIDR($pdo) {
         $view = new View("QuizReseauxPtut/views/ip/choixCIDR");

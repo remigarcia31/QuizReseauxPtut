@@ -22,11 +22,11 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style_ethernet.css" rel="stylesheet" />
     <script src="jquery/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <TITLE> Quiz Réseaux </TITLE>
-    <link rel="icon" type="image/png" href="images/monitor.png"> <!-- Icone dans l'onglet -->
+    <link rel="icon" type="image/png" href="images/ethernet.png"> <!-- Icone dans l'onglet -->
 
 </head>
 
@@ -84,26 +84,57 @@
                             </form>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form action="index.php" method="post">
+                                <input hidden name="action" value="verif">
+                                <input hidden name="controller" value="ethernet">
+                                <input type="submit" value="Ajout scénario">
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <section>
-        <p>
-        <div class="container_fluid">
-            <div class="img_fond col-xs-12 center">
-                <br /><br />
-                <h1>Quiz Réseaux</h1>
-                <br />
-                <h3>Ce site vous permet de réviser les notions du cours de réseaux.
-                    <br />Allant de l'adressage IP au Wi-Fi, testez vos connaissances !
-                </h3>
-                <br /><br /><br />
-            </div>
+    <script type="text/javascript">
+    /* 
+    méthode qui permet d'afficher (ou non) les choix du type du chronogramme 
+    Si l'option chronogramme est cochée, alors on affiche les deux possibilités de chronogramme 
+    (commuté ou partagé), sinon on n'affiche pas les types de chronogramme
+    */
+        function ChronogrammeCheck() {
+            if (document.getElementById('yesCheck').checked) {
+                document.getElementById('ifCheck').style.display = 'block';
+            } else document.getElementById('ifCheck').style.display = 'none';
+
+        }
+    </script>
+
+    <h1> Quiz Ethernet : Choix du type du quizz </h1>
+    <form action="index.php" method="post">
+        <p>Avant de commencer le quiz, veuillez choisir si vous voulez vous entrainer avec des trames ou bien avec des
+            chronogrammes :</p>
+        <label for="TRAMES">Avec des trames Ethernet </label>
+        <!-- appel de la méthode pour le type du chronogramme -->
+        <input type="radio" name="typeEthernet" value="TRAMES" onclick="javascript:ChronogrammeCheck()"  required> </br>
+        <label for="CHRONO">Avec des chronogrammes Ethernet</label>
+        <input type="radio" name="typeEthernet" value="CHRONO" onclick="javascript:ChronogrammeCheck()" id="yesCheck">
+        <!-- affichage du div sur l'option chrono est cochée -->
+        <div id="ifCheck" style="display:none" class="typeChronogramme">
+            <br>
+            <label for="PARTAGE">Chronogramme partagé</label>
+            <input type="radio" name="typeChrono" value="PARTAGE" checked></br>
+            <label for="COMMUTE">Chronogramme commuté</label>
+            <input type="radio" name="typeChrono" value="COMMUTE"> </br>
         </div>
-        </p>
-    </section>
+        <input hidden name="action" value="quizEthernet">
+        <input hidden name="controller" value="Ethernet">
+        <br /><br />
+        <input value="Choisir" type="submit" />
+    </form>
+
     <!-- pied de page -->
     <footer>
         <div class="container-fluid">
@@ -111,7 +142,7 @@
                 <p>Ce site a été créé par des étudiants en DUT informatique 2ème année.</p>
                 <div class="col-xs-6">
                     <p>Pour plus d'informations, consultez les mentions légales.</p>
-                    <form action="" method="post">
+                    <form action="index.php" method="post">
                         <input hidden name="action" value="mentions">
                         <input hidden name="controller" value="Home">
                         <input type="submit" value="Mentions légales">
@@ -119,7 +150,7 @@
                 </div>
                 <div class="col-xs-6">
                     <p>Consultez également la manière dont son protegés vos données.</p>
-                    <form action="" method="post">
+                    <form action="index.php" method="post">
                         <input hidden name="action" value="protection">
                         <input hidden name="controller" value="Home">
                         <input type="submit" value="Protection des données">
@@ -131,6 +162,6 @@
             </div>
         </div>
     </footer>
-</body>
+</BODY>
 
 </HTML>

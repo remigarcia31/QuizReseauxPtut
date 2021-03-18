@@ -22,16 +22,18 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/style_ethernet.css" rel="stylesheet" />
     <script src="jquery/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <TITLE> Quiz Réseaux </TITLE>
-    <link rel="icon" type="image/png" href="images/monitor.png"> <!-- Icone dans l'onglet -->
+    <link rel="icon" type="image/png" href="images/ethernet.png"> <!-- Icone dans l'onglet -->
 
 </head>
 
 <body>
     <?php
+    $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
+
     spl_autoload_extensions(".php");
     spl_autoload_register();
 
@@ -89,48 +91,65 @@
         </nav>
     </header>
 
-    <section>
-        <p>
-        <div class="container_fluid">
-            <div class="img_fond col-xs-12 center">
-                <br /><br />
-                <h1>Quiz Réseaux</h1>
-                <br />
-                <h3>Ce site vous permet de réviser les notions du cours de réseaux.
-                    <br />Allant de l'adressage IP au Wi-Fi, testez vos connaissances !
-                </h3>
-                <br /><br /><br />
-            </div>
-        </div>
-        </p>
-    </section>
-    <!-- pied de page -->
-    <footer>
-        <div class="container-fluid">
-            <div class="col-xs-12 col-sm-6 col-md-10">
-                <p>Ce site a été créé par des étudiants en DUT informatique 2ème année.</p>
-                <div class="col-xs-6">
-                    <p>Pour plus d'informations, consultez les mentions légales.</p>
-                    <form action="" method="post">
-                        <input hidden name="action" value="mentions">
-                        <input hidden name="controller" value="Home">
-                        <input type="submit" value="Mentions légales">
-                    </form>
-                </div>
-                <div class="col-xs-6">
-                    <p>Consultez également la manière dont son protegés vos données.</p>
-                    <form action="" method="post">
-                        <input hidden name="action" value="protection">
-                        <input hidden name="controller" value="Home">
-                        <input type="submit" value="Protection des données">
-                    </form>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-2">
-                <a href="https://www.iut-rodez.fr/" target="_blank"> <img src="images/logoIut.png" alt="Logo IUT de Rodez" class="img_iut"> </a>
-            </div>
-        </div>
-    </footer>
-</body>
+    <h1>Quizz ethernet : Connexion administrateur </h1>
+    <?php
+    //Si le pseudo et le mdp est entré, alors on effectue des vérifications
+    if (isset($_POST["pseudo"]) && isset($_POST["pwd"])) {
+        //si le pseudo et le mdp correspondent aux identifiants administrateurs
+        if ($_POST["pseudo"] == "admin" && $_POST["pwd"] == "ptut123") {
+            //affichage d'un bouton qui redirige vers l'ajout/consultation de scénario
+    ?>
+            <form action="index.php" method="post">
+                <input hidden name="action" value="ajoutScenario">
+                <input hidden name="controller" value="Ethernet">
+                <input type="submit" value="Ajouter/consulter un scénario">
+            </form>
+        <?php
+        } else {
+        ?>
+            <!-- formulaire qui permet d'entrer le pseudo et le mot de passe pour accéder à la page d'ajout/consultation de scénario -->
+            <form action="index.php" method="POST">
+                <table class="container enonceScenario">
+                    <tr>
+                        <th>Nom d'utilisateur :</th>
+                        <td><input name="pseudo" type="text" placeholder="Veuillez rentrer l'identifiant administrateur" size="40" required></td>
+                    </tr>
+                    <tr>
+                        <th>Mot de passe :</th>
+                        <td><input name="pwd" type="password" placeholder="Veuillez rentrer le mot de passe" size="40" required></td>
+                    </tr>
+                </table>
+                <input hidden name="action" value="verif">
+                <input hidden name="controller" value="Ethernet">
+                <input type="submit" value="Valider">
+            </form>
+        <?php
+            //Si le pseudo ou le mdp ne correspond pas aux identifiants administrateur, on affiche un message d'erreur
+            echo "<h2 class='faux'> Pseudo ou mot de passe incorrect ! </h2>";
+        }
+    } else {
+        ?>
+        <form action="index.php" method="POST">
+            <table class="container enonceScenario">
+                <tr>
+                    <th>Nom d'utilisateur :</th>
+                    <td><input name="pseudo" type="text" placeholder="Veuillez rentrer l'identifiant administrateur" size="40" required></td>
+                </tr>
+                <tr>
+                    <th>Mot de passe :</th>
+                    <td><input name="pwd" type="password" placeholder="Veuillez rentrer le mot de passe" size="40" required>
+                    </td>
+                </tr>
+            </table>
+            <input hidden name="action" value="verif">
+            <input hidden name="controller" value="Ethernet">
+            <input type="submit" value="Valider">
+        </form>
+    <?php
+    }
+
+    ?>
+
+</BODY>
 
 </HTML>
