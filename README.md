@@ -4,7 +4,6 @@
 Projet tutoré qui à pour but la création d'un site web avec un quiz sur les notions du module "réseau" du DUT Informatique 1ère et 2ème année à l'IUT de Rodez. 
 Ce quizz permet aux étudiants de réviser les notions de réseaux suivantes 
  - IP
- - Wi-Fi
  - Ethernet
  
 Ce projet est réalisé par quatres étudiants :
