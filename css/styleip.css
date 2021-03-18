@@ -70,6 +70,10 @@ footer
 	border-color : white!important;
 }
 
+input{
+    color: black;
+}
+
 input[type=submit] {
     padding: 12px 20px;
     margin: 8px 0;
