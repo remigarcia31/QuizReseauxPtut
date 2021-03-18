@@ -38,6 +38,7 @@ spl_autoload_register();
 
 use yasmf\DataSource;
 use yasmf\HttpHelper;
+$bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
 
 ?>
 <!-- menu qui permet de naviguer entre les différentes pages du site -->

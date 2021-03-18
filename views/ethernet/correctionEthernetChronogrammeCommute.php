@@ -20,9 +20,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-    <link href="css/style_ethernet.css" rel="stylesheet"/>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link href="css/style_ethernet.css" rel="stylesheet" />
     <script src="jquery/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <TITLE> Quiz Réseaux </TITLE>
@@ -31,379 +31,387 @@
 </head>
 
 <body>
-<?php
-spl_autoload_extensions(".php");
-spl_autoload_register();
+    <?php
+    spl_autoload_extensions(".php");
+    spl_autoload_register();
 
-use yasmf\HttpHelper;
+    use yasmf\HttpHelper;
 
-?>
-<!-- menu qui permet de naviguer entre les différentes pages du site -->
-<header>
-    <nav class="navbar navbar-inverse navbar-darkblue">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+    ?>
+    <!-- menu qui permet de naviguer entre les différentes pages du site -->
+    <header>
+        <nav class="navbar navbar-inverse navbar-darkblue">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <!-- Bouton pour aller à l'accueil -->
+                            <form action="index.php" method="post">
+                                <input hidden name="action" value="">
+                                <input hidden name="controller" value="">
+                                <input type="submit" value="Accueil">
+                            </form>
+                        </li>
+                        <li>
+                            <!-- Bouton pour aller à la page IP -->
+                            <form action="index.php" method="post">
+                                <input hidden name="action" value="choixCIDR">
+                                <input hidden name="controller" value="Ip">
+                                <input type="submit" value="IP">
+                            </form>
+                        </li>
+                        <li>
+                            <!-- Bouton pour aller à la page Ethernet -->
+                            <form action="index.php" method="post">
+                                <input hidden name="action" value="ethernet">
+                                <input hidden name="controller" value="Ethernet">
+                                <input type="submit" value="Ethernet">
+                            </form>
+                        </li>
+                        <li>
+                            <!-- Bouton pour aller à la page contact -->
+                            <form action="index.php" method="post">
+                                <input hidden name="action" value="contact">
+                                <input hidden name="controller" value="">
+                                <input type="submit" value="Contact">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <!-- Bouton pour aller à l'accueil -->
-                        <form action="index.php" method="post">
-                            <input hidden name="action" value="">
-                            <input hidden name="controller" value="">
-                            <input type="submit" value="Accueil">
-                        </form>
-                    </li>
-                    <li>
-                        <!-- Bouton pour aller à la page IP -->
-                        <form action="index.php" method="post">
-                            <input hidden name="action" value="choixCIDR">
-                            <input hidden name="controller" value="Ip">
-                            <input type="submit" value="IP">
-                        </form>
-                    </li>
-                    <li>
-                        <!-- Bouton pour aller à la page Ethernet -->
-                        <form action="index.php" method="post">
-                            <input hidden name="action" value="ethernet">
-                            <input hidden name="controller" value="Ethernet">
-                            <input type="submit" value="Ethernet">
-                        </form>
-                    </li>
-                    <li>
-                        <!-- Bouton pour aller à la page contact -->
-                        <form action="index.php" method="post">
-                            <input hidden name="action" value="contact">
-                            <input hidden name="controller" value="">
-                            <input type="submit" value="Contact">
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
-<div class="container-fluid">
-    <br/>
-    <br/>
-    <h2>Correction</h2>
-    <br/>
-    <table class="container">
-        <THEAD>
+    <div class="container-fluid">
+        <br />
+        <br />
+        <h2>Correction</h2>
+        <br />
+        <table class="container">
+            <THEAD>
+                <?php
+
+                if (isset($_POST['num_scenario'])) {
+                    $num_scenario = $_POST['num_scenario'];
+                }
+
+                $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
+                $maRequete = $bdd->query("SELECT * FROM ethernet WHERE id_scenario = $num_scenario");
+
+                $note = 0;
+                //affichage de la correction du scénario sur lequel l'utilisateur à travaillé
+                while ($ligne = $maRequete->fetch()) {
+                ?>
+                    <tr>
+                        <th>
+                            <h3></h3>
+                        </th>
+                        <th>
+                            <h3>
+                                <?php
+                                echo $ligne['T1M1'];
+                                echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
+                                echo $ligne['T1M2'];
+                                ?>
+                            </h3>
+                        </th>
+                        <th>
+                            <h3>Temps IT</h3>
+                        </th>
+                        <th>
+                            <h3>
+                                <?php
+                                echo $ligne['T2M1'];
+                                echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
+                                echo $ligne['T2M2'];
+                                ?>
+                            </h3>
+                        </th>
+                        <th>
+                            <h3></h3>
+                        </th>
+
+                    <tr>
+                        <td></td>
+                        <?php
+                        echo "<td>" . $ligne['T1'] . "</td>";
+                        ?>
+                        <td></td>
+                        <?php
+                        echo "<td>" . $ligne['T2'] . "</td>";
+                        ?>
+                        <td></td>
+                    </tr>
+        </table>
+        <table>
+            <img src="images/grandefleche.png" height="50px" width="1600px">
+            <table class="container">
+                <tr>
+                    <td></td>
+                    <?php
+                    echo "<td>" . $ligne['T1temps'] . "μs</td>";
+                    ?>
+                    <?php
+                    echo "<td>" . $ligne['ittemps1'] . "μs</td>";
+                    ?>
+                    <?php
+                    echo "<td>" . $ligne['T2temps'] . "μs</td>";
+                    ?>
+                    <td></td>
+                </tr>
+                </tbody>
+
+            </table>
+            </THEAD>
+        </table>
+
+        <table class="container">
+            <THEAD>
+                <tr>
+                    <th>
+                        <h3></h3>
+                    </th>
+                    <th>
+                        <h3>
+                            <?php
+                            echo $ligne['T3M1'];
+                            echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
+                            echo $ligne['T3M2'];
+                            ?>
+                        </h3>
+                    </th>
+                    <th>
+                        <h3></h3>
+                    </th>
+
+                <tr>
+                    <td></td>
+                    <?php
+                    echo "<td>" . $ligne['T3'] . "</td>";
+                    ?>
+                    <td></td>
+                </tr>
+        </table>
+        <table>
+            <img src="images/grandefleche.png" height="50px" width="1600px">
+            <table class="container">
+                <tr>
+                    <td></td>
+                    <?php
+                    echo "<td>" . $ligne['T3temps'] . "μs</td>";
+                    ?>
+                    <td></td>
+
+                </tr>
+                </tbody>
+
+            </table>
+            </THEAD>
+        </table>
+
+        </form>
+        <?php
+                    if (!(isset($_POST["noChrono"]))) {
+                        //affichage des réponse de l'utilisateur
+        ?>
+            ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            <br />
+            <br />
+
+            <h2>Votre réponse </h2>
+            <br />
+            <!-- affichage de la réponse de l'utilisateur-->
+            <table class="container">
+                <THEAD>
+                    <tr>
+                        <th>
+                            <h3></h3>
+                        </th>
+                        <th>
+                            <h3>
+                                <?php
+                                if ($_POST['T1M1'] == $ligne['T1M1']) {
+                                    echo "<span class=\"correct\">" . $_POST['T1M1'] . "</span>";
+                                    $note++;
+                                } else {
+                                    echo "<span class=\"faux\">" . $_POST['T1M1'] . "</span>";
+                                }
+                                echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
+
+                                if ($_POST['T1M2'] == $ligne['T1M2']) {
+                                    echo "<span class=\"correct\">" . $_POST['T1M2'] . "</span>";
+                                    $note++;
+                                } else {
+                                    echo "<span class=\"faux\">" . $_POST['T1M2'] . "</span>";
+                                }
+                                ?>
+                            </h3>
+                        </th>
+                        <th>
+                            <h3>Temps IT</h3>
+                        </th>
+                        <th>
+                            <h3>
+                                <?php
+                                if ($_POST['T2M1'] == $ligne['T2M1']) {
+                                    echo "<span class=\"correct\">" . $_POST['T2M1'] . "</span>";
+                                    $note++;
+                                } else {
+                                    echo "<span class=\"faux\">" . $_POST['T2M1'] . "</span>";
+                                }
+
+                                echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
+
+                                if ($_POST['T2M2'] == $ligne['T2M2']) {
+                                    echo "<span class=\"correct\">" . $_POST['T2M2'] . "</span>";
+                                    $note++;
+                                } else {
+                                    echo "<span class=\"faux\">" . $_POST['T2M2'] . "</span>";
+                                }
+                                ?>
+                            </h3>
+                        </th>
+                        <th>
+                            <h3></h3>
+                        </th>
+
+                    <tr>
+                        <td></td>
+                        <?php
+                        if ($_POST['T1'] == $ligne['T1']) {
+                            echo "<td><p class=\"correct\";>" . $_POST['T1'] . "</td>";
+                            $note++;
+                        } else {
+                            echo "<td><p class=\"faux\";>" . $_POST['T1'] . "</p></td>";
+                        }
+                        ?>
+                        <td></td>
+                        <?php
+                        if ($_POST['T2'] == $ligne['T2']) {
+                            echo "<td><p class=\"correct\";>" . $_POST['T2'] . "</td>";
+                            $note++;
+                        } else {
+                            echo "<td><p class=\"faux\";>" . $_POST['T2'] . "</p></td>";
+                        }
+                        ?>
+                        <td></td>
+                    </tr>
+            </table>
+            <table>
+                <img src="images/grandefleche.png" height="50px" width="1600px">
+                <table class="container">
+                    <tr>
+                        <td></td>
+                        <?php
+                        if ($_POST['t1temps'] == $ligne['T1temps']) {
+                            echo "<td><p class=\"correct\";>" . $_POST['t1temps'] . "μs</td>";
+                            $note++;
+                        } else {
+                            echo "<td><p class=\"faux\";>" . $_POST['t1temps'] . "</p>μs</td>";
+                        }
+                        ?>
+                        <?php
+                        if ($_POST['ittemps1'] == $ligne['ittemps1']) {
+                            echo "<td><p class=\"correct\";>" . $_POST['ittemps1'] . "μs</td>";
+                            $note++;
+                        } else {
+                            echo "<td><p class=\"faux\";>" . $_POST['ittemps1'] . "</p>μs</td>";
+                        }
+                        ?>
+                        <?php
+                        if ($_POST['t2temps'] == $ligne['T2temps']) {
+                            echo "<td><p class=\"correct\";>" . $_POST['t2temps'] . "μs</td>";
+                            $note++;
+                        } else {
+                            echo "<td><p class=\"faux\";>" . $_POST['t2temps'] . "</p>μs</td>";
+                        }
+                        ?>
+                        <td></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+                </THEAD>
+            </table>
+
+            <table class="container">
+                <THEAD>
+                    <tr>
+                        <th>
+                            <h3></h3>
+                        </th>
+                        <th>
+                            <h3>
+                                <?php
+                                if ($_POST['T3M1'] == $ligne['T3M1']) {
+                                    echo "<span class=\"correct\">" . $_POST['T3M1'] . "</span>";
+                                    $note++;
+                                } else {
+                                    echo "<span class=\"faux\">" . $_POST['T3M1'] . "</span>";
+                                }
+
+                                echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
+
+                                if ($_POST['T3M2'] == $ligne['T3M2']) {
+                                    echo "<span class=\"correct\">" . $_POST['T3M2'] . "</span>";
+                                    $note++;
+                                } else {
+                                    echo "<span class=\"faux\">" . $_POST['T3M2'] . "</span>";
+                                }
+                                ?>
+                            </h3>
+                        </th>
+
+                    <tr>
+                        <td></td>
+                        <?php
+                        if ($_POST['T3'] == $ligne['T3']) {
+                            echo "<td><p class=\"correct\";>" . $_POST['T3'] . "</td>";
+                            $note++;
+                        } else {
+                            echo "<td><p class=\"faux\";>" . $_POST['T3'] . "</p></td>";
+                        }
+                        ?>
+                        <td></td>
+                    </tr>
+            </table>
+            <table>
+                <img src="images/grandefleche.png" height="50px" width="1600px">
+                <table class="container">
+                    <tr>
+                        <td></td>
+                        <?php
+                        if ($_POST['t3temps'] == $ligne['T3temps']) {
+                            echo "<td><p class=\"correct\";>" . $_POST['t3temps'] . "μs</td>";
+                            $note++;
+                        } else {
+                            echo "<td><p class=\"faux\";>" . $_POST['t3temps'] . "</p>μs</td>";
+                        }
+                        ?>
+                        <td></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+                </THEAD>
+            </table>
+
         <?php
 
-        if (isset($_POST['num_scenario'])) {
-            $num_scenario = $_POST['num_scenario'];
-        }
-
-        $bdd = new PDO("mysql:host=mysql-ptutquizz.alwaysdata.net;dbname=ptutquizz_bd", 'ptutquizz', 'ptut123');
-        $maRequete = $bdd->query("SELECT * FROM ethernet WHERE id_scenario = $num_scenario");
-
-        $note = 0;
-        //affichage de la correction du scénario sur lequel l'utilisateur à travaillé
-        while ($ligne = $maRequete->fetch()) {
+                        $note = round((($note * 10) / 14), 2); // on ramène la note sur 10
+                        echo "<h2> Vous avez eu $note/10 </h2>";
+                    }
         ?>
-        <tr>
-            <th>
-                <h3></h3>
-            </th>
-            <th>
-                <h3>
-                    <?php
-                    echo $ligne['T1M1'];
-                    echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
-                    echo $ligne['T1M2'];
-                    ?>
-                </h3>
-            </th>
-            <th>
-                <h3>Temps IT</h3>
-            </th>
-            <th>
-                <h3>
-                    <?php
-                    echo $ligne['T2M1'];
-                    echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
-                    echo $ligne['T2M2'];
-                    ?>
-                </h3>
-            </th>
-            <th>
-                <h3></h3>
-            </th>
-
-        <tr>
-            <td></td>
-            <?php
-            echo "<td>" . $ligne['T1'] . "</td>";
-            ?>
-            <td></td>
-            <?php
-            echo "<td>" . $ligne['T2'] . "</td>";
-            ?>
-            <td></td>
-        </tr>
-    </table>
-    <table>
-        <img src="images/grandefleche.png" height="50px" width="1600px">
-        <table class="container">
-            <tr>
-                <td></td>
-                <?php
-                echo "<td>" . $ligne['T1temps'] . "μs</td>";
-                ?>
-                <?php
-                echo "<td>" . $ligne['ittemps1'] . "μs</td>";
-                ?>
-                <?php
-                echo "<td>" . $ligne['T2temps'] . "μs</td>";
-                ?>
-                <td></td>
-            </tr>
-            </tbody>
-
-        </table>
-        </THEAD>
-    </table>
-
-    <table class="container">
-        <THEAD>
-        <tr>
-            <th>
-                <h3></h3>
-            </th>
-            <th>
-                <h3>
-                    <?php
-                    echo $ligne['T3M1'];
-                    echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
-                    echo $ligne['T3M2'];
-                    ?>
-                </h3>
-            </th>
-            <th>
-                <h3></h3>
-            </th>
-
-        <tr>
-            <td></td>
-            <?php
-            echo "<td>" . $ligne['T3'] . "</td>";
-            ?>
-            <td></td>
-        </tr>
-    </table>
-    <table>
-        <img src="images/grandefleche.png" height="50px" width="1600px">
-        <table class="container">
-            <tr>
-                <td></td>
-                <?php
-                echo "<td>" . $ligne['T3temps'] . "μs</td>";
-                ?>
-                <td></td>
-
-            </tr>
-            </tbody>
-
-        </table>
-        </THEAD>
-    </table>
-
-    </form>
-    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    <br/>
-    <br/>
-    <h2>Votre réponse </h2>
-    <br/>
-    <!-- affichage de la réponse de l'utilisateur-->
-    <table class="container">
-        <THEAD>
-        <tr>
-            <th>
-                <h3></h3>
-            </th>
-            <th>
-                <h3>
-                    <?php
-                    if ($_POST['T1M1'] == $ligne['T1M1']) {
-                        echo "<span class=\"correct\">" . $_POST['T1M1'] . "</span>";
-                        $note++;
-                    } else {
-                        echo "<span class=\"faux\">" . $_POST['T1M1'] . "</span>";
-                    }
-                    echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
-
-                    if ($_POST['T1M2'] == $ligne['T1M2']) {
-                        echo "<span class=\"correct\">" . $_POST['T1M2'] . "</span>";
-                        $note++;
-                    } else {
-                        echo "<span class=\"faux\">" . $_POST['T1M2'] . "</span>";
-                    }
-                    ?>
-                </h3>
-            </th>
-            <th>
-                <h3>Temps IT</h3>
-            </th>
-            <th>
-                <h3>
-                    <?php
-                    if ($_POST['T2M1'] == $ligne['T2M1']) {
-                        echo "<span class=\"correct\">" . $_POST['T2M1'] . "</span>";
-                        $note++;
-                    } else {
-                        echo "<span class=\"faux\">" . $_POST['T2M1'] . "</span>";
-                    }
-
-                    echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
-
-                    if ($_POST['T2M2'] == $ligne['T2M2']) {
-                        echo "<span class=\"correct\">" . $_POST['T2M2'] . "</span>";
-                        $note++;
-                    } else {
-                        echo "<span class=\"faux\">" . $_POST['T2M2'] . "</span>";
-                    }
-                    ?>
-                </h3>
-            </th>
-            <th>
-                <h3></h3>
-            </th>
-
-        <tr>
-            <td></td>
-            <?php
-            if ($_POST['T1'] == $ligne['T1']) {
-                echo "<td><p class=\"correct\";>" . $_POST['T1'] . "</td>";
-                $note++;
-            } else {
-                echo "<td><p class=\"faux\";>" . $_POST['T1'] . "</p></td>";
-            }
-            ?>
-            <td></td>
-            <?php
-            if ($_POST['T2'] == $ligne['T2']) {
-                echo "<td><p class=\"correct\";>" . $_POST['T2'] . "</td>";
-                $note++;
-            } else {
-                echo "<td><p class=\"faux\";>" . $_POST['T2'] . "</p></td>";
-            }
-            ?>
-            <td></td>
-        </tr>
-    </table>
-    <table>
-        <img src="images/grandefleche.png" height="50px" width="1600px">
-        <table class="container">
-            <tr>
-                <td></td>
-                <?php
-                if ($_POST['t1temps'] == $ligne['T1temps']) {
-                    echo "<td><p class=\"correct\";>" . $_POST['t1temps'] . "μs</td>";
-                    $note++;
-                } else {
-                    echo "<td><p class=\"faux\";>" . $_POST['t1temps'] . "</p>μs</td>";
-                }
-                ?>
-                <?php
-                if ($_POST['ittemps1'] == $ligne['ittemps1']) {
-                    echo "<td><p class=\"correct\";>" . $_POST['ittemps1'] . "μs</td>";
-                    $note++;
-                } else {
-                    echo "<td><p class=\"faux\";>" . $_POST['ittemps1'] . "</p>μs</td>";
-                }
-                ?>
-                <?php
-                if ($_POST['t2temps'] == $ligne['T2temps']) {
-                    echo "<td><p class=\"correct\";>" . $_POST['t2temps'] . "μs</td>";
-                    $note++;
-                } else {
-                    echo "<td><p class=\"faux\";>" . $_POST['t2temps'] . "</p>μs</td>";
-                }
-                ?>
-                <td></td>
-            </tr>
-            </tbody>
-
-        </table>
-        </THEAD>
-    </table>
-
-    <table class="container">
-        <THEAD>
-        <tr>
-            <th>
-                <h3></h3>
-            </th>
-            <th>
-                <h3>
-                    <?php
-                    if ($_POST['T3M1'] == $ligne['T3M1']) {
-                        echo "<span class=\"correct\">" . $_POST['T3M1'] . "</span>";
-                        $note++;
-                    } else {
-                        echo "<span class=\"faux\">" . $_POST['T3M1'] . "</span>";
-                    }
-
-                    echo "<img src=\"images/petitefleche.png\" height=\"30px\" width=\"50px\">";
-
-                    if ($_POST['T3M2'] == $ligne['T3M2']) {
-                        echo "<span class=\"correct\">" . $_POST['T3M2'] . "</span>";
-                        $note++;
-                    } else {
-                        echo "<span class=\"faux\">" . $_POST['T3M2'] . "</span>";
-                    }
-                    ?>
-                </h3>
-            </th>
-
-        <tr>
-            <td></td>
-            <?php
-            if ($_POST['T3'] == $ligne['T3']) {
-                echo "<td><p class=\"correct\";>" . $_POST['T3'] . "</td>";
-                $note++;
-            } else {
-                echo "<td><p class=\"faux\";>" . $_POST['T3'] . "</p></td>";
-            }
-            ?>
-            <td></td>
-        </tr>
-    </table>
-    <table>
-        <img src="images/grandefleche.png" height="50px" width="1600px">
-        <table class="container">
-            <tr>
-                <td></td>
-                <?php
-                if ($_POST['t3temps'] == $ligne['T3temps']) {
-                    echo "<td><p class=\"correct\";>" . $_POST['t3temps'] . "μs</td>";
-                    $note++;
-                } else {
-                    echo "<td><p class=\"faux\";>" . $_POST['t3temps'] . "</p>μs</td>";
-                }
-                ?>
-                <td></td>
-            </tr>
-            </tbody>
-
-        </table>
-        </THEAD>
-    </table>
-
+        <br />
     <?php
-    }
-    $note = round((($note * 10) / 14), 2); // on ramène la note sur 10
-    echo "<h2> Vous avez eu $note/10 </h2>";
-    ?>
-    <br/>
+                } ?>
     <!-- bouton qui ramène au choix du quizz ethernet -->
     <form action="index.php" method="post">
         <input hidden name="action" value="ethernet">
@@ -411,9 +419,9 @@ use yasmf\HttpHelper;
         <input type="submit" value="Réessayer">
     </form>
 
-</div>
+    </div>
 
-</footer>
+    </footer>
 </BODY>
 
 </HTML>
